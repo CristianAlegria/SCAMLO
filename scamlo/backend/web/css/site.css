@@ -1,0 +1,331 @@
+html,
+body {
+  height: 100%;
+  border-radius: 0px;
+}
+
+hr {
+  background-color: #fff;
+  border-top: 2px dashed #8c8b8b;
+}
+
+#myCarousel{
+  background: rgb(255,0,0);
+}
+
+.event-form-calendario .fc-future{
+  cursor:pointer;
+}
+
+.event-form-calendario .fc-past{
+  cursor:no-drop;
+}
+
+.event-form-calendario .fc-today{
+  /*cursor:no-drop;*/
+  cursor:pointer;
+}
+
+
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -80px;
+  padding: 0 0 60px;
+  border-radius: 0px;
+}
+
+.wrap > .container {
+  padding: 20px 15px 20px;
+  border-radius: 0px;
+  width: 85%;
+}
+
+.footer {
+  height: 80px;
+  background: rgb(255,0,0);
+  /*background-color: #f5f5f5;*/
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  color: #ffffff;
+  border-radius: 0px;
+}
+
+.not-set {
+  color: #c55;
+  font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
+}
+
+a.asc:after {
+  content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+  content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+  content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+  content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+  content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+  content: "\e156";
+}
+
+.grid-view td {
+  white-space: nowrap;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+  min-width: 50px;
+}
+
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+.error-summary {
+  color: #a94442;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+.navbar {
+  background: rgb(255,0,0);
+  border-color: #c0392b;
+  border-radius: 0px;
+}
+.navbar .navbar-brand {
+  color: #ffffff;
+  background-color: transparent;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #e3e3e3;
+}
+.navbar .navbar-text {
+  color: #ffffff;
+}
+.navbar .navbar-nav > li > a {
+  color: #ffffff;
+  background-color: transparent;
+}
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus {
+  color: #e3e3e3;
+}
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus {
+  color: #e3e3e3;
+
+}
+.navbar .navbar-nav > .open > a,
+.navbar .navbar-nav > .open > a:hover,
+.navbar .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: transparent;
+}
+.navbar .navbar-toggle {
+  border-color: #c0392b;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #c0392b;
+}
+.navbar .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #ffffff;
+}
+.navbar .navbar-link {
+  color: #ffffff;
+}
+.navbar .navbar-link:hover {
+  color: #c0392b;
+}
+
+@media (max-width: 4000px) {
+  .navbar .navbar-nav .open .dropdown-menu > li > a {
+    color: #a8a8a8;
+    background-color: transparent;
+  }
+  .navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: #c0392b;
+  }
+  .navbar .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #c0392b;
+  }
+
+  .navbar {
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+  }
+
+  .nav{
+    padding: 0;
+  }
+
+  #evento{
+    display: none;
+  }
+
+  #horario{
+    display: none;
+  }
+
+  #clave{
+    display: none;
+  }
+
+/*  #espacio-seleccionado{
+  display: none;
+  }*/
+
+  #mensaje-espacios{
+    color: #a94442;
+  }
+
+  #mensaje-clave{
+    color: #a94442;
+  }
+
+  /*css para los links de las migas de pan*/
+
+  .breadcrumb > li > a {
+    color: #c00;
+  }
+
+  .breadcrumb > li > a:hover {
+    color: #a94442;
+  }
+
+  ul.breadcrumb{
+    border-radius: 0px;
+  }
+
+  /*css para los labels de las grid*/
+
+  th > a {
+    color: #292929;
+  }
+
+  th > a:hover {
+    color: #666666;
+  }
+
+  td > a {
+    color: #c00;
+  }
+
+  td > a:hover {
+    color: #a94442;
+  }
+
+  .btn{
+    border-radius: 0px;
+  }
+
+  .btn-danger{
+    background: rgb(255,0,0);
+  }
+
+  .modal-header {
+    padding:2px 15px;
+    border-radius: 0px;
+    background-color: rgba(235,30,0,1);
+    color: #ffffff;
+  }
+
+  .modal-body{
+    border-radius: 0px;
+  }
+
+.grid-view > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.grid-view > th, .grid-view > td {
+    text-align: left;
+    padding: 8px;
+}
+
+.filters{background-color: #f2f2f2}
+
+.grid-view > th {
+    background-color: #f2f2f2;
+}
+
+.wrap{
+  background: #EBEBEB;
+}
+
+#main-content{
+  background: white;
+}
+ 
+.header{
+  text-align: center;
+  z-index: 100;
+}
+
+.panel-default > .panel-heading {
+    /*color: #ffffff;*/
+    background-color: #EBEBEB;
+    border-color:#c1c1c1;
+    border-radius: 0px;
+    text-align: center;
+    padding: 2px;
+}
+
+.panel-default{
+  border-radius: 0px;
+  border: 1px solid #c1c1c1;
+}
+
+.grid-view > table > thead{
+  background-color: #EBEBEB;
+}
+
+/*Colocar para que se vean los botones*/
+.event-form-calendario .fc-month-button, .event-form-calendario .fc-agendaWeek-button, .event-form-calendario .fc-agendaDay-button {
+  display: none;
+} 
+
+/*#siguiente{
+  display: none;
+}*/
