@@ -72,6 +72,44 @@ $("form#servicio-form").on("beforeSubmit", function(e) {
     return false;
 });
 
+
+// obtener la id del formulario y establecer el manejador de eventos Espacios
+$("form#espacio-form").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+        form.attr("action")+"&submit=true",
+        form.serialize()
+        )
+    .done(function(result) {
+        form.parent().html(result.message);
+        $.pjax.reload({container:"#espacio-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
+// obtener la id del formulario y establecer el manejador de eventos Edificios
+$("form#edificio-form").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+    form.attr("action")+"&submit=true",
+    form.serialize()
+    )
+    .done(function(result) {
+        form.parent().html(result.message);
+        $.pjax.reload({container:"#edificio-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
+
 // obtener la id del formulario y establecer el manejador de eventos Cambiar contraseña
 $("form#user-cambiar-clave").on("beforeSubmit", function(e) {
     var form = $(this);
@@ -112,3 +150,5 @@ $(document).on('click', '#actualizar-clave', (function(){
     $("#user-passwordactual").css("border-color", "#ccc");
     return true;
 }));
+
+

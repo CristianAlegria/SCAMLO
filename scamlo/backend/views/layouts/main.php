@@ -64,6 +64,13 @@ MomentjsAsset::register($this);
             'items' => [
                 ['label' => 'Gestión de Servicios', 'url' => ['/servicio/index']],  
             ],
+        ];
+        $menuItems [] = ['label' => Icon::show('building-o', ['class'=>'fa-lg']).'Espacios',  
+            'items' => [
+                ['label' => 'Edificios', 'url' => ['/edificio/index']],                
+                ['label' => 'Tipos de Espacio', 'url' => ['/tipo-espacio/index']],
+                ['label' => 'Gestión de Espacios', 'url' => ['/espacio/index']],                
+            ],
         ];       
     }
     
