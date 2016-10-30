@@ -58,7 +58,13 @@ MomentjsAsset::register($this);
             'items' => [
                 ['label' => 'Gestión de Usuarios', 'url' => ['/user/index']],  
             ],
-        ];        
+        ]; 
+
+         $menuItems [] = ['label' => Icon::show('life-ring', ['class'=>'fa-lg']).'Servicio',
+            'items' => [
+                ['label' => 'Gestión de Servicios', 'url' => ['/servicio/index']],  
+            ],
+        ];       
     }
     
     if (Yii::$app->user->isGuest) {        

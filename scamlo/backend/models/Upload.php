@@ -41,8 +41,8 @@ class Upload extends Model
                 $user->cedula = $rowData[0][1];               
                 $user->telefono = $rowData[0][2];    
                 $user->email = $rowData[0][3];  
-                $es_administrador = ValueHelpers::getRoleValue($rowData[0][4]);                
-                $user->role_id = $es_administrador;                  
+                $rolId = ValueHelpers::getRoleValue($rowData[0][4]);                
+                $user->role_id = $rolId;                  
                 $user->setPassword($clave);
                 $user->generateAuthKey();        
                 $user->save();   

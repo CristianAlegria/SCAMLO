@@ -6,28 +6,26 @@ use common\models\PermissionHelpers;
 use kartik\icons\Icon;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\User */
+/* @var $model backend\models\Servicio */
 
-$this->title = $model->nombre_completo;
-
+$this->title = $model->nombre_servicio;
 $show_this_nav = PermissionHelpers::requireMinimumRole('Administrador');
 
-$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Servicios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="user-view">
+<div class="servicio-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+   <p>
 
     <?php if (!Yii::$app->user->isGuest && $show_this_nav) {
 
             echo Html::a( Icon::show('trash').'Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-            'confirm' => Yii::t('app', 'Seguro que quieres eliminar este usuario?'),
+            'confirm' => Yii::t('app', 'Seguro que quieres eliminar este servicio?'),
             'method' => 'post',
             ],
         ]);
@@ -40,18 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'nombre_completo',
-            'cedula',
-            'telefono',
-            //'auth_key',
-            //'password_hash',
-            //'password_reset_token',
-            'email:email',
-            'roleName',
-            'statusName',
-            
-            'created_at',
-            'updated_at',
+            'nombre_servicio',
         ],
     ]) ?>
 
