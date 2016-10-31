@@ -8,6 +8,11 @@ use backend\models\search\ServicioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\PermissionHelpers;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
+use \yii\db\IntegrityException;
+use kartik\icons\Icon;
 
 /**
  * ServicioController implements the CRUD actions for Servicio model.
@@ -66,7 +71,8 @@ class ServicioController extends Controller
         $model = new Servicio();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+             Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado un nuevo servicio.');
+            return $this->redirect(['index']);
         } else {
             return $this->renderAjax('create', [
                 'model' => $model,
@@ -83,14 +89,20 @@ class ServicioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->renderAjax('update', [
-                'model' => $model,
-            ]);
+        
+       if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', Icon::show('check').'Servicio actualizado.');
+                return $this->redirect(['index']);
+            } else {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
         }
+
+        return $this->renderAjax('update', [
+            'model' => $model,
+            ]);
     }
 
     /**
@@ -101,7 +113,13 @@ class ServicioController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+       $model= $this->findModel($id);
+        try {
+             $model->delete();
+             Yii::$app->session->setFlash('success', Icon::show('check').'Servicio eliminado.');
+        } catch(IntegrityException $e) {
+            Yii::$app->session->setFlash('error', 'No es posible eliminar el servicio.');
+        }
 
         return $this->redirect(['index']);
     }

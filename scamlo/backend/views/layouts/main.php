@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -42,7 +43,10 @@ MomentjsAsset::register($this);
 
     <?php
 
-    $es_administrador = ValueHelpers::getRoleValue('Administrador'); 
+    $es_administrador = ValueHelpers::getRoleValue('Administrador');      
+    $es_administrativo = ValueHelpers::getRoleValue('Administrativo'); 
+    $es_mantenimientoLogistica = ValueHelpers::getRoleValue('MantenimientoLogistica');  
+    $es_usuario = ValueHelpers::getRoleValue('Usuario');  
 
     NavBar::begin([
             'brandLabel' => Icon::show('home',['class'=>'fa-lg']).'Inicio',
@@ -74,6 +78,15 @@ MomentjsAsset::register($this);
         ];       
     }
     
+    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_administrativo) {
+        
+        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
+            'items' => [
+                ['label' => 'Solicitud de servicio', 'url' => ['/site/login']],                          
+            ],
+        ];      
+    }
+
     if (Yii::$app->user->isGuest) {        
        
         $menuItems[] = ['label' => Icon::show('sign-in', ['class'=>'fa-lg']).'Ingresar', 'url' => ['/site/login']];

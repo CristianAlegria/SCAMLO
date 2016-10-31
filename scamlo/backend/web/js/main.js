@@ -1,4 +1,5 @@
 
+
 $(document).on('click', '#activity-index-link', (function() {
         $.get(
         $(this).data('url'),
