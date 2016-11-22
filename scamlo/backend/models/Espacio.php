@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  * @property TipoEspacio $tipoEspacio
  */
 class Espacio extends \yii\db\ActiveRecord
-{
+{    
     /**
      * @inheritdoc
      */

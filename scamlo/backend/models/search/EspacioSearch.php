@@ -85,32 +85,5 @@ class EspacioSearch extends Espacio
         return $dataProvider;
     }
 
-    public function searchParaReserva($params)
-    {
-        $query = Espacio::find();
-
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 5,
-            ],
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            return $dataProvider;
-        }
-        
-        $query->joinWith('edificio');
-
-        $query->orFilterWhere(['like', 'codigo', $this->globalSearch])
-            ->orFilterWhere(['like', 'edificio.nombre_edificio', $this->globalSearch])
-            ->orFilterWhere(['like', 'capacidad', $this->globalSearch])
-            ->orFilterWhere(['like', 'nombre', $this->globalSearch]);
-
-        return $dataProvider;
-    }
+    
 }

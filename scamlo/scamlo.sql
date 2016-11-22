@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2016 a las 04:53:24
+-- Tiempo de generación: 15-11-2016 a las 21:03:39
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -23,6 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `dependencia`
+--
+
+CREATE TABLE IF NOT EXISTS `dependencia` (
+  `id` int(11) NOT NULL,
+  `nombre_dependencia` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `dependencia`
+--
+
+INSERT INTO `dependencia` (`id`, `nombre_dependencia`) VALUES
+(2, 'Bienestar'),
+(3, 'Biblioteca'),
+(4, 'Extension');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `edificio`
 --
 
@@ -30,14 +50,16 @@ CREATE TABLE IF NOT EXISTS `edificio` (
   `edificio_id` int(11) NOT NULL,
   `nombre_edificio` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
   `ubicacion` varchar(80) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Universidad del valle - sede yumbo'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `edificio`
 --
 
 INSERT INTO `edificio` (`edificio_id`, `nombre_edificio`, `ubicacion`) VALUES
-(2, 'Nuevo', 'Al lado del antiguo');
+(0, 'No definido', 'Universidad del valle - sede yumbo'),
+(2, 'Nuevo', 'Al lado del antiguo'),
+(3, 'Martin Elias', 'Edificio nuevo');
 
 -- --------------------------------------------------------
 
@@ -52,14 +74,20 @@ CREATE TABLE IF NOT EXISTS `espacio` (
   `capacidad` int(11) NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Universidad del valle - sede yumbo',
   `edificio_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `espacio`
 --
 
 INSERT INTO `espacio` (`espacio_id`, `nombre`, `codigo`, `capacidad`, `ubicacion`, `edificio_id`) VALUES
-(1, 'Auditorio', '1', 100, 'Al frente de la entrada principal', 2);
+(0, 'Otros', '0', 0, 'Universidad del valle - sede yumbo', 0),
+(1, 'Auditorio', '1', 100, 'Al frente de la entrada principal', 2),
+(2, 'Aula de clases', '2', 60, '', 2),
+(3, 'Auditorio', '300', 100, '', 3),
+(4, 'Aula de clases', '301', 40, '', 3),
+(5, 'Aula de clases', '302', 40, '', 3),
+(6, 'Auditorio', '709', 300, '', 3);
 
 -- --------------------------------------------------------
 
@@ -68,9 +96,18 @@ INSERT INTO `espacio` (`espacio_id`, `nombre`, `codigo`, `capacidad`, `ubicacion
 --
 
 CREATE TABLE IF NOT EXISTS `estado` (
-  `estado_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(48) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`id`, `nombre`) VALUES
+(1, 'Solucionado'),
+(2, 'Pendiente'),
+(3, 'No Realizado');
 
 -- --------------------------------------------------------
 
@@ -103,7 +140,7 @@ INSERT INTO `role` (`id`, `role_name`, `role_value`) VALUES
 CREATE TABLE IF NOT EXISTS `servicio` (
   `id` int(11) NOT NULL,
   `nombre_servicio` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `servicio`
@@ -113,6 +150,34 @@ INSERT INTO `servicio` (`id`, `nombre_servicio`) VALUES
 (2, 'Traslados'),
 (3, 'Logistica'),
 (4, 'Mantenimiento');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitud`
+--
+
+CREATE TABLE IF NOT EXISTS `solicitud` (
+  `id` int(11) unsigned NOT NULL,
+  `dependencia_id` int(11) NOT NULL,
+  `servicio_id` int(11) NOT NULL,
+  `description` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `espacio_id` int(11) NOT NULL,
+  `descripcion_otros` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `numero_piso` int(11) NOT NULL,
+  `fecha` varchar(48) COLLATE utf8_spanish_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `estado_id` int(11) NOT NULL DEFAULT '2',
+  `descripcion_estado` varchar(255) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `solicitud`
+--
+
+INSERT INTO `solicitud` (`id`, `dependencia_id`, `servicio_id`, `description`, `espacio_id`, `descripcion_otros`, `numero_piso`, `fecha`, `user_id`, `estado_id`, `descripcion_estado`) VALUES
+(1, 2, 4, 'Se daño el ventilador', 1, 'el unico que hay', 1, '2016-12-03', 1, 2, 'pendiente'),
+(2, 4, 4, 'yyyy', 4, '', 1, '2016-03-04', 1, 2, 'uuy');
 
 -- --------------------------------------------------------
 
@@ -150,7 +215,8 @@ CREATE TABLE IF NOT EXISTS `tipo_espacio` (
 --
 
 INSERT INTO `tipo_espacio` (`tipo_espacio_id`, `nombre_tipo`) VALUES
-(1, 'Auditorio');
+(1, 'Auditorio'),
+(2, 'Aula de clases');
 
 -- --------------------------------------------------------
 
@@ -171,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `status_id` smallint(6) NOT NULL DEFAULT '10',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -184,6 +250,12 @@ INSERT INTO `user` (`id`, `nombre_completo`, `cedula`, `telefono`, `auth_key`, `
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `dependencia`
+--
+ALTER TABLE `dependencia`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `edificio`
@@ -201,7 +273,7 @@ ALTER TABLE `espacio`
 -- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
-  ADD PRIMARY KEY (`estado_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `role`
@@ -214,6 +286,12 @@ ALTER TABLE `role`
 --
 ALTER TABLE `servicio`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`), ADD KEY `estado_id` (`estado_id`), ADD KEY `espacio_id` (`espacio_id`), ADD KEY `servicio_id` (`servicio_id`), ADD KEY `dependencia_id` (`dependencia_id`);
 
 --
 -- Indices de la tabla `status`
@@ -238,15 +316,25 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `dependencia`
+--
+ALTER TABLE `dependencia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `edificio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `edificio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `espacio`
 --
 ALTER TABLE `espacio`
-  MODIFY `espacio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `espacio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `estado`
+--
+ALTER TABLE `estado`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `role`
 --
@@ -256,7 +344,12 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `status`
 --
@@ -271,7 +364,21 @@ ALTER TABLE `tipo_espacio`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+ADD CONSTRAINT `fk_espacior_id` FOREIGN KEY (`espacio_id`) REFERENCES `espacio` (`espacio_id`),
+ADD CONSTRAINT `fk_estado_id` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`id`),
+ADD CONSTRAINT `fk_servicio_id` FOREIGN KEY (`servicio_id`) REFERENCES `servicio` (`id`),
+ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+ADD CONSTRAINT `solicitud_ibfk_1` FOREIGN KEY (`dependencia_id`) REFERENCES `dependencia` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

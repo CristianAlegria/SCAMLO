@@ -258,16 +258,16 @@
         },
         {
             "name": "bower-asset/moment",
-            "version": "2.15.1",
+            "version": "2.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moment/moment.git",
-                "reference": "986dba9497b7c173760d1d7bc85606c574ed2c44"
+                "reference": "dc1e659b34365c98896e73e2e858f9efa4b3d5dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment/zipball/986dba9497b7c173760d1d7bc85606c574ed2c44",
-                "reference": "986dba9497b7c173760d1d7bc85606c574ed2c44",
+                "url": "https://api.github.com/repos/moment/moment/zipball/dc1e659b34365c98896e73e2e858f9efa4b3d5dc",
+                "reference": "dc1e659b34365c98896e73e2e858f9efa4b3d5dc",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -420,16 +420,16 @@
         },
         {
             "name": "components/flag-icon-css",
-            "version": "2.5.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lipis/flag-icon-css.git",
-                "reference": "e9066d32af90ece3558ee25b616b223cb2b0e35d"
+                "reference": "113ad54e85c5d03dbe727dcdd5dbd23de1917d4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/e9066d32af90ece3558ee25b616b223cb2b0e35d",
-                "reference": "e9066d32af90ece3558ee25b616b223cb2b0e35d",
+                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/113ad54e85c5d03dbe727dcdd5dbd23de1917d4d",
+                "reference": "113ad54e85c5d03dbe727dcdd5dbd23de1917d4d",
                 "shasum": ""
             },
             "type": "component",
@@ -454,7 +454,7 @@
                 }
             ],
             "description": "CSS for vector based country flags",
-            "time": "2016-09-18 09:55:14"
+            "time": "2016-10-29 15:47:10"
         },
         {
             "name": "conquer/momentjs",
@@ -554,16 +554,16 @@
         },
         {
             "name": "fortawesome/font-awesome",
-            "version": "v4.6.3",
+            "version": "v4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "8e241f209faa1dd2182c9fdc9c352d8806504a4e"
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/8e241f209faa1dd2182c9fdc9c352d8806504a4e",
-                "reference": "8e241f209faa1dd2182c9fdc9c352d8806504a4e",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687",
                 "shasum": ""
             },
             "require-dev": {
@@ -598,7 +598,7 @@
                 "font",
                 "icon"
             ],
-            "time": "2016-05-13 15:42:25"
+            "time": "2016-10-24 15:52:54"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -813,12 +813,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "7cca20a27234207d6d114a39a3263ae9c88fd171"
+                "reference": "448db13904dad68153ef466bbc905b916a2a5900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/7cca20a27234207d6d114a39a3263ae9c88fd171",
-                "reference": "7cca20a27234207d6d114a39a3263ae9c88fd171",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/448db13904dad68153ef466bbc905b916a2a5900",
+                "reference": "448db13904dad68153ef466bbc905b916a2a5900",
                 "shasum": ""
             },
             "require": {
@@ -855,7 +855,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-09-06 20:07:42"
+            "time": "2016-10-22 16:52:42"
         },
         {
             "name": "kartik-v/yii2-icons",
@@ -1009,12 +1009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "8738f6dc3211d949b05189ba103aab786143fc6c"
+                "reference": "33c7f4751291eaa34413b7b82b1659ae44ea8b23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/8738f6dc3211d949b05189ba103aab786143fc6c",
-                "reference": "8738f6dc3211d949b05189ba103aab786143fc6c",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/33c7f4751291eaa34413b7b82b1659ae44ea8b23",
+                "reference": "33c7f4751291eaa34413b7b82b1659ae44ea8b23",
                 "shasum": ""
             },
             "require": {
@@ -1055,7 +1055,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-09-04 10:52:50"
+            "time": "2016-10-08 18:16:58"
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
@@ -1063,12 +1063,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-                "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027"
+                "reference": "744e12c1f5be45357ec50eea6f678ecc9ba67dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/6fc8922716bf0b3638c67ff0895a9ff688b6c027",
-                "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/744e12c1f5be45357ec50eea6f678ecc9ba67dc2",
+                "reference": "744e12c1f5be45357ec50eea6f678ecc9ba67dc2",
                 "shasum": ""
             },
             "require": {
@@ -1110,7 +1110,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-07-23 15:30:48"
+            "time": "2016-10-18 06:35:15"
         },
         {
             "name": "kartik-v/yii2-widget-timepicker",
@@ -1322,16 +1322,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.1.4",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "2851e1932d77ce727776154d659b232d061e816a"
+                "reference": "ca809c64072e0fe61c1c7fb3c76cdc32265042ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/2851e1932d77ce727776154d659b232d061e816a",
-                "reference": "2851e1932d77ce727776154d659b232d061e816a",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/ca809c64072e0fe61c1c7fb3c76cdc32265042ac",
+                "reference": "ca809c64072e0fe61c1c7fb3c76cdc32265042ac",
                 "shasum": ""
             },
             "require": {
@@ -1371,20 +1371,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
+            "time": "2016-09-06 11:02:40"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.1.4",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "bb7395e8b1db3654de82b9f35d019958276de4d7"
+                "reference": "59eee3c76eb89f21857798620ebdad7a05ad14f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/bb7395e8b1db3654de82b9f35d019958276de4d7",
-                "reference": "bb7395e8b1db3654de82b9f35d019958276de4d7",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/59eee3c76eb89f21857798620ebdad7a05ad14f4",
+                "reference": "59eee3c76eb89f21857798620ebdad7a05ad14f4",
                 "shasum": ""
             },
             "require": {
@@ -1427,7 +1427,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-05 08:37:39"
+            "time": "2016-10-18 15:46:07"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1536,16 +1536,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.9",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133"
+                "reference": "5bfcb7a6dfa9771e2248eb8c4448613330f343ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2b75151ea60e1fd820046416eee2e89c3dda1133",
-                "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5bfcb7a6dfa9771e2248eb8c4448613330f343ff",
+                "reference": "5bfcb7a6dfa9771e2248eb8c4448613330f343ff",
                 "shasum": ""
             },
             "require": {
@@ -1626,7 +1626,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-07-11 13:36:42"
+            "time": "2016-10-20 12:02:50"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1983,6 +1983,7 @@
                 "codeception",
                 "yii2"
             ],
+            "abandoned": "codeception/codeception",
             "time": "2016-03-17 03:41:26"
         },
         {

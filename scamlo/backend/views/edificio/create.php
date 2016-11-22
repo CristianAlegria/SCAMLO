@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->renderAjax('_form', [
+    <?= $this->renderAjax('_form', [    	
         'model' => $model,
     ]) ?>
 

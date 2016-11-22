@@ -64,7 +64,7 @@ MomentjsAsset::register($this);
             ],
         ]; 
 
-         $menuItems [] = ['label' => Icon::show('life-ring', ['class'=>'fa-lg']).'Servicio',
+         $menuItems [] = ['label' => Icon::show('life-ring', ['class'=>'fa-lg']).'Servicios',
             'items' => [
                 ['label' => 'Gestión de Servicios', 'url' => ['/servicio/index']],  
             ],
@@ -75,14 +75,28 @@ MomentjsAsset::register($this);
                 ['label' => 'Tipos de Espacio', 'url' => ['/tipo-espacio/index']],
                 ['label' => 'Gestión de Espacios', 'url' => ['/espacio/index']],                
             ],
-        ];       
+        ]; 
+        $menuItems [] = ['label' => Icon::show('address-card-o', ['class'=>'fa-lg']).'Dependencias',  
+            'items' => [
+                ['label' => 'Gestionar Dependencia', 'url' => ['/dependencia/index']],                
+                               
+            ],
+        ];      
     }
     
     if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_administrativo) {
         
         $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
             'items' => [
-                ['label' => 'Solicitud de servicio', 'url' => ['/site/login']],                          
+                ['label' => 'Mis solicitudes', 'url' => ['/solicitud/index']],                          
+            ],
+        ];      
+    }
+     if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_administrador) {
+        
+        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
+            'items' => [
+                ['label' => 'Mis solicitudes', 'url' => ['/solicitud/index']],                          
             ],
         ];      
     }

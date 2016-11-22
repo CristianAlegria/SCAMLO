@@ -1,34 +1,25 @@
 <?php
 
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\icons\Icon;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Espacio */
-/* @var $form yii\widgets\ActiveForm */
 
+/* @var $this yii\web\View */
+/* @var $model backend\models\Dependencia */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="espacio-form">
+<div class="dependencia-form">
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'espacio-form',
+     <?php $form = ActiveForm::begin([
+        'id' => 'edificio-form',
         'enableAjaxValidation' => true,
         'enableClientScript' => true,
         'enableClientValidation' => true,
         ]); ?>
 
-    <?= $form->field($model, 'edificio_id')->dropDownList($model->edificioList,[ 'prompt' => 'Si el epacio pertenece a un edificio elige uno' ]);?>
-
-    <?= $form->field($model, 'nombre')->dropDownList($model->tipoEspacioList,[ 'prompt' => 'Por favor elige uno' ]);?>
-
-    <?= $form->field($model, 'codigo')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'capacidad')->textInput() ?>
-
-    <?= $form->field($model, 'ubicacion')->textInput(['maxlength' => true])->textInput(['placeholder' => "La ubicación es opcional"])?>
+    <?= $form->field($model, 'nombre_dependencia')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <p>

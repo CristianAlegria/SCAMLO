@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Servicio;
-use backend\models\search\ServicioSearch;
+use backend\models\Dependencia;
+use backend\models\search\DependenciaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,9 +15,9 @@ use \yii\db\IntegrityException;
 use kartik\icons\Icon;
 
 /**
- * ServicioController implements the CRUD actions for Servicio model.
+ * DependenciaController implements the CRUD actions for Dependencia model.
  */
-class ServicioController extends Controller
+class DependenciaController extends Controller
 {
     /**
      * @inheritdoc
@@ -35,12 +35,12 @@ class ServicioController extends Controller
     }
 
     /**
-     * Lists all Servicio models.
+     * Lists all Dependencia models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ServicioSearch();
+        $searchModel = new DependenciaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -50,7 +50,7 @@ class ServicioController extends Controller
     }
 
     /**
-     * Displays a single Servicio model.
+     * Displays a single Dependencia model.
      * @param integer $id
      * @return mixed
      */
@@ -62,21 +62,21 @@ class ServicioController extends Controller
     }
 
     /**
-     * Creates a new Servicio model.
+     * Creates a new Dependencia model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($submit = false)
+    public function actionCreate($submit = false)    
     {
-        $model = new Servicio();
+        $model = new Dependencia();   
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
-        }
+        }    
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-             Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado un nuevo servicio.');
+             Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva dependencia.');
             return $this->redirect(['index']);
         } else {
             return $this->renderAjax('create', [
@@ -86,7 +86,7 @@ class ServicioController extends Controller
     }
 
     /**
-     * Updates an existing Servicio model.
+     * Updates an existing Dependencia model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,10 +94,10 @@ class ServicioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        
-       if ($model->load(Yii::$app->request->post())) {
+
+        if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', Icon::show('check').'Servicio actualizado.');
+                Yii::$app->session->setFlash('success', Icon::show('check').'Dependencia actualizada.');
                 return $this->redirect(['index']);
             } else {
                 Yii::$app->response->format = Response::FORMAT_JSON;
@@ -111,34 +111,33 @@ class ServicioController extends Controller
     }
 
     /**
-     * Deletes an existing Servicio model.
+     * Deletes an existing Dependencia model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-       $model= $this->findModel($id);
+        $model= $this->findModel($id);
         try {
              $model->delete();
-             Yii::$app->session->setFlash('success', Icon::show('check').'Servicio eliminado.');
+             Yii::$app->session->setFlash('success', Icon::show('check').'Dependencia eliminada.');
         } catch(IntegrityException $e) {
-            Yii::$app->session->setFlash('error', 'No es posible eliminar el servicio.');
+            Yii::$app->session->setFlash('error', 'No es posible eliminar la dependencia.');
         }
-
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Servicio model based on its primary key value.
+     * Finds the Dependencia model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Servicio the loaded model
+     * @return Dependencia the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Servicio::findOne($id)) !== null) {
+        if (($model = Dependencia::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

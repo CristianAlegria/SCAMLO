@@ -5,13 +5,12 @@ namespace backend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Edificio;
-
+use backend\models\Dependencia;
 
 /**
- * EdificioSearch represents the model behind the search form about `backend\models\Edificio`.
+ * DependenciaSearch represents the model behind the search form about `backend\models\Dependencia`.
  */
-class EdificioSearch extends Edificio
+class DependenciaSearch extends Dependencia
 {
     /**
      * @inheritdoc
@@ -19,8 +18,8 @@ class EdificioSearch extends Edificio
     public function rules()
     {
         return [
-            [['edificio_id'], 'integer'],
-            [['nombre_edificio', 'ubicacion'], 'safe'],
+            [['id'], 'integer'],
+            [['nombre_dependencia'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class EdificioSearch extends Edificio
      */
     public function search($params)
     {
-        $query = Edificio::find();
+        $query = Dependencia::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +59,10 @@ class EdificioSearch extends Edificio
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'edificio_id' => $this->edificio_id,
+            'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre_edificio', $this->nombre_edificio])
-            ->andFilterWhere(['like', 'ubicacion', $this->ubicacion]);
+        $query->andFilterWhere(['like', 'nombre_dependencia', $this->nombre_dependencia]);
 
         return $dataProvider;
     }

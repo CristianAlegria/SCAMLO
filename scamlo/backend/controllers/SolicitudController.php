@@ -3,22 +3,21 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Espacio;
-use backend\models\search\EspacioSearch;
+use backend\models\Solicitud;
+use backend\models\search\SolicitudSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\PermissionHelpers;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use kartik\icons\Icon;
 use \yii\db\IntegrityException;
+use kartik\icons\Icon;
 
 /**
- * EspacioController implements the CRUD actions for Espacio model.
+ * SolicitudController implements the CRUD actions for Solicitud model.
  */
-
-class EspacioController extends Controller
+class SolicitudController extends Controller
 {
     /**
      * @inheritdoc
@@ -45,7 +44,7 @@ class EspacioController extends Controller
         'allow' => true,
         'roles' => ['@'],
         'matchCallback' => function ($rule, $action) {
-            return PermissionHelpers::requireMinimumRole('Auxiliar')
+            return PermissionHelpers::requireMinimumRole('Administrativo')
             && PermissionHelpers::requireStatus('Activo');
         }
         ],
@@ -70,12 +69,12 @@ class EspacioController extends Controller
     }
 
     /**
-     * Lists all Espacio models.
+     * Lists all Solicitud models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EspacioSearch();
+        $searchModel = new SolicitudSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -84,20 +83,9 @@ class EspacioController extends Controller
         ]);
     }
 
-    public function actionSearch()
-    {
-        $searchModel = new EspacioSearch();
-        $dataProvider = $searchModel->searchParaReserva(Yii::$app->request->queryParams);
-
-        return $this->render('_search', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     /**
-     * Displays a single Espacio model.
-     * @param integer $id
+     * Displays a single Solicitud model.
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -108,13 +96,13 @@ class EspacioController extends Controller
     }
 
     /**
-     * Creates a new Espacio model.
+     * Creates a new Solicitud model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate($submit = false)
     {
-        $model = new Espacio();
+        $model = new Solicitud();
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -123,7 +111,7 @@ class EspacioController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado un nuevo espacio.');
+                Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva Soliciud.');
                 return $this->redirect(['index']);
             } else {
                 Yii::$app->response->format = Response::FORMAT_JSON;
@@ -137,14 +125,14 @@ class EspacioController extends Controller
     }
 
     /**
-     * Updates an existing Espacio model.
+     * Updates an existing Solicitud model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id,$submit = false)
     {
-         $model = $this->findModel($id);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -153,7 +141,7 @@ class EspacioController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', Icon::show('check').'Espacio actualizado.');
+                Yii::$app->session->setFlash('success', Icon::show('check').'Solicitud actualizada.');
                 return $this->redirect(['index']);
             } else {
                 Yii::$app->response->format = Response::FORMAT_JSON;
@@ -167,36 +155,37 @@ class EspacioController extends Controller
     }
 
     /**
-     * Deletes an existing Espacio model.
+     * Deletes an existing Solicitud model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $model= $this->findModel($id);
+         $model= $this->findModel($id);
         try {
              $model->delete();
-             Yii::$app->session->setFlash('success', Icon::show('check').'Espacio eliminado.');
+             Yii::$app->session->setFlash('success', Icon::show('check').'Solicitud eliminada.');
         } catch(IntegrityException $e) {
-            Yii::$app->session->setFlash('error', 'No es posible eliminar el espacio porque ha sido reservado en una o varias ocasiones.');
+            Yii::$app->session->setFlash('error', 'No es posible eliminar la solicitud.');
         }
+
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Espacio model based on its primary key value.
+     * Finds the Solicitud model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Espacio the loaded model
+     * @param string $id
+     * @return Solicitud the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Espacio::findOne($id)) !== null) {
+        if (($model = Solicitud::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('La página solicitada no existe.');
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 }

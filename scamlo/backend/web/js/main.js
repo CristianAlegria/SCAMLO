@@ -73,6 +73,24 @@ $("form#servicio-form").on("beforeSubmit", function(e) {
     return false;
 });
 
+// obtener la id del formulario y establecer el manejador de eventos Usuarios
+$("form#solicitud-form").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+    form.attr("action")+"&submit=true",
+    form.serialize()
+    )
+    .done(function(result) {
+        form.parent().html(result.message);
+        $.pjax.reload({container:"#solicitud-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
 
 // obtener la id del formulario y establecer el manejador de eventos Espacios
 $("form#espacio-form").on("beforeSubmit", function(e) {
@@ -127,6 +145,41 @@ $("form#user-cambiar-clave").on("beforeSubmit", function(e) {
     e.stopImmediatePropagation();
     return false;
 });
+
+// Dependencia
+$("form#dependencia-form").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+    form.attr("action")+"&submit=true",
+    form.serialize()
+    )
+    .done(function(result) {
+        $.pjax.reload({container:"#dependencia-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
+// servicio
+$("form#servicio-form").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+    form.attr("action")+"&submit=true",
+    form.serialize()
+    )
+    .done(function(result) {
+        $.pjax.reload({container:"#servicio-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
 
 $(document).on('click', '#guardar', (function(){
     var cedula = $('#user-cedula').val();

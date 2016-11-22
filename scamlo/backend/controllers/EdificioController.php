@@ -101,7 +101,7 @@ class EdificioController extends Controller
      * @return mixed
      */
     public function actionCreate($submit = false)
-    {
+    {        
         $model = new Edificio();
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
