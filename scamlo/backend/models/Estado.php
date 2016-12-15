@@ -49,6 +49,6 @@ class Estado extends \yii\db\ActiveRecord
      */
     public function getSolicituds()
     {
-        return $this->hasMany(Solicitud::className(), ['estado_id' => 'id']);
+        return $this->hasMany(Solicitud::className(), ['estado_id' => 'description']);
     }
 }

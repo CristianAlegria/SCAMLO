@@ -114,6 +114,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
 
                 /* Your other attribute labels */
+                'id' => Yii::t('app', 'No. de Trabajador'),
                 'roleName' => Yii::t('app', 'Rol'),
                 'statusName' => Yii::t('app', 'Estado'),
                 'created_at' => Yii::t('app', 'Creado el'),

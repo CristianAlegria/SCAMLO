@@ -173,7 +173,7 @@ class Solicitud extends \yii\db\ActiveRecord
         return $this->espacio ? $this->espacio->nombre: '- sin espacio -';
     }
 
-     public function getNombreUser()
+    public function getNombreUser()
     {
         return $this->user ? $this->user->nombre_completo : '- sin nombre -';
     }
@@ -188,6 +188,7 @@ class Solicitud extends \yii\db\ActiveRecord
         return $this->espacio ? $this->espacio->codigo : '- sin codigo -';
     }
 
+    /*Consulta hecha por nosotros nosotros*/
     
     public  function getNombreEdificio()
     {

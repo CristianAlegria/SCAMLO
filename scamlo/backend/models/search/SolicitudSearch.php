@@ -12,9 +12,12 @@ use backend\models\Solicitud;
  */
 class SolicitudSearch extends Solicitud
 {
+     public $globalSearch;
+     
     /**
      * @inheritdoc
-     */
+     */   
+
     public function rules()
     {
         return [
@@ -87,6 +90,46 @@ class SolicitudSearch extends Solicitud
             ->andFilterWhere(['like', 'descripcion_otros', $this->descripcion_otros])
             ->andFilterWhere(['like', 'fecha', $this->fecha])
             ->andFilterWhere(['like', 'descripcion_estado', $this->descripcion_estado]); 
+        return $dataProvider;
+    }
+
+    public function searchParaAsignacionTrabajadores($params)
+    {
+        $query = Solicitud::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 5,
+            ],
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+        
+        $query->joinWith('dependencia');
+        $query->joinWith('servicio');
+        $query->joinWith('espacio');
+        $query->joinWith('estado');
+
+        $query->orFilterWhere(['like', 'id', $this->globalSearch])
+            ->orFilterWhere(['like', 'dependencia.nombre_dependencia', $this->globalSearch])
+            ->orFilterWhere(['like', 'servicio.nombre_servicio', $this->globalSearch])
+            ->orFilterWhere(['like', 'description', $this->globalSearch])
+            ->orFilterWhere(['like', 'espacio.nombre', $this->globalSearch])
+            ->orFilterWhere(['like', 'descripcion_otros', $this->globalSearch])
+            ->orFilterWhere(['like', 'numero_piso', $this->globalSearch])
+            ->orFilterWhere(['like', 'fecha', $this->globalSearch])
+            ->orFilterWhere(['like', 'user.nombre_completo', $this->globalSearch])
+            ->orFilterWhere(['like', 'estado.nombre', $this->globalSearch])
+            ->orFilterWhere(['like', 'espacio_id', $this->globalSearch])
+            ->orFilterWhere(['like', 'descripcion_estado', $this->globalSearch]);            
+
         return $dataProvider;
     }
 }

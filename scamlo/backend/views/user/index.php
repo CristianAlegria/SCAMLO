@@ -73,7 +73,7 @@ $show_this_nav = PermissionHelpers::requireMinimumRole('Auxiliar');
             'filter' => Html::activeDropDownList($searchModel, 'role_id', ArrayHelper::map(Role::find()->asArray()->all(), 'role_name', 'role_name'), ['class' => 'form-control', 'prompt' => '']),
             ],
             [
-            'attribute' => 'estatus_id',
+            'attribute' => 'Estado',
             'value' => 'status.status_name',
             'filter' => Html::activeDropDownList($searchModel, 'status_id', ArrayHelper::map(Status::find()->asArray()->all(), 'status_name', 'status_name'), ['class' => 'form-control', 'prompt' => '']),
             ],

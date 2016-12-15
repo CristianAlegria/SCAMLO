@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+
 use Yii;
 use backend\models\Edificio;
 use yii\helpers\ArrayHelper;
