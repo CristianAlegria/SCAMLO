@@ -43,8 +43,8 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['solicitud_id', 'usuario_id', 'fecha_hora_inicio'], 'required'],
-            [['asignacion_id', 'solicitud_id', 'estado_id', 'usuario_id', 'numero_inventario'], 'integer'],
+            [[ 'usuario_id', 'fecha_hora_inicio'], 'required'],
+            [['solicitud_id', 'estado_id', 'usuario_id', 'numero_inventario'], 'integer'],
             [['fecha_hora_inicio', 'fecha_hora_fin'], 'safe'],
             [['equipo_reparado'], 'string', 'max' => 80],
             [['observaciones'], 'string', 'max' => 255],

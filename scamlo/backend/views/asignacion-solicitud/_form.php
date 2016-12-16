@@ -38,24 +38,31 @@ use yii\bootstrap\Modal;
     
     
     <?php $form = ActiveForm::begin(); ?>
+   
 
-    <?= $form->field($model, 'asignacion_id')->textInput() ?>
+    <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
-    <?= $form->field($model, 'solicitud_id')->textInput() ?>
+    <?php $time = time();?>
 
-    <?= $form->field($model, 'estado_id')->textInput() ?> 
+    <?php date_default_timezone_set('America/Bogota');  ?>    
+     
+    <?php $fecha = date('Y-m-d (H:i:s)', $time);?>
+
+    <?= $form->field($model, 'fecha_hora_inicio')->hiddenInput (['value'=>$fecha])->label(false);?>           
+
+    <?= $form->field($model, 'fecha_hora_fin')->hiddenInput (['value'=>''])->label(false);?>    
+
+    <?= $form->field($model, 'equipo_reparado')->hiddenInput(['value'=>''])->label(false);?> 
+
+    <?= $form->field($model, 'numero_inventario')->hiddenInput(['value'=>''])->label(false);?> 
+
+    <?= $form->field($model, 'observaciones')->hiddenInput(['value'=>''])->label(false);?>      
+
+    
 
     <?= $form->field($model, 'usuario_id')->textInput() ?>
-
-    <?= $form->field($model, 'fecha_hora_inicio')->textInput() ?>
-
-    <?= $form->field($model, 'fecha_hora_fin')->textInput() ?>
-
-    <?= $form->field($model, 'equipo_reparado')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'numero_inventario')->textInput() ?>
-
-    <?= $form->field($model, 'observaciones')->textInput(['maxlength' => true]) ?> 
+    <?= $form->field($model, 'solicitud_id')->textInput() ?>
+    <!--<?= $form->field($model, 'solicitud_id')->textInput(['readonly' => true]) ?>-->
 
    <!-- <div class="form-group">
         <?//= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -8,7 +8,7 @@ use kartik\icons\Icon;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AsignacionSolicitud */
 
-$this->title = $model->asignacion_id;
+$this->title = $model->nombreSolicitud;
 $show_this_nav = PermissionHelpers::requireMinimumRole('Administrativo');
 $this->params['breadcrumbs'][] = ['label' => 'Asignar trabajadores a solicitudes de mantenimiento y logistica', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'asignacion_id',
+            'asignacion_id',
             'nombreEstado',
             //'solicitud_id',
-            'nombreSolicitud',
+            
            // 'estado_id',
             //'usuario_id',
             'nombreUser',            
