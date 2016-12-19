@@ -36,7 +36,7 @@ class Espacio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['codigo', 'capacidad', 'nombre'], 'required'],
+            [['codigo', 'capacidad', 'nombre','edificio_id'], 'required'],
             [['capacidad', 'codigo'], 'integer','max' => 9999999999, 'min' => 001],
             [['ubicacion'], 'string', 'max' => 40, 'min' => 4],
             [['nombre'], 'string', 'max' => 40],

@@ -74,9 +74,11 @@ class User extends ActiveRecord implements IdentityInterface
             
                 ['status_id', 'default', 'value' => self::STATUS_ACTIVO],
                 [['status_id'],'in', 'range'=>array_keys($this->getStatusList())],
+                ['status_id', 'required'],
 
                 ['role_id', 'default', 'value' => 5],
                 [['role_id'],'in', 'range'=>array_keys($this->getRoleList())],
+                ['role_id', 'required'],
 
                 ['nombre_completo', 'filter', 'filter' => 'trim'],
                 ['nombre_completo', 'required'],

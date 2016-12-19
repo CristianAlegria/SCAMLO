@@ -32,6 +32,8 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    
     public static function tableName()
     {
         return 'asignacion_solicitud';
@@ -43,7 +45,7 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'usuario_id', 'fecha_hora_inicio'], 'required'],
+            [[ 'usuario_id', 'fecha_hora_inicio','usuario_id','solicitud_id'], 'required'],
             [['solicitud_id', 'estado_id', 'usuario_id', 'numero_inventario'], 'integer'],
             [['fecha_hora_inicio', 'fecha_hora_fin'], 'safe'],
             [['equipo_reparado'], 'string', 'max' => 80],
@@ -62,9 +64,9 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     {
         return [
             'asignacion_id' => 'Asignacion ID',
-            'solicitud_id' => 'No. de solicitud',
-            'estado_id' => 'Estado ID',
-            'usuario_id' => 'No. de Trabajador',
+            'solicitud_id' => 'Solicitud',
+            'estado_id' => 'Estado',
+            'usuario_id' => 'Trabajador',
             'fecha_hora_inicio' => 'Fecha Hora Inicio',
             'fecha_hora_fin' => 'Fecha Hora Fin',
             'equipo_reparado' => 'Equipo Reparado',
@@ -102,7 +104,6 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
         return Arrayhelper::map($droptions, 'id', 'nombre');
     }
 
-
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -116,6 +117,12 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
         return $this->solicitud ? $this->solicitud->description : '- sin estado -';
     }
 
+    public static function getSolicitudList()
+    {
+        $droptions = Solicitud::find()->where(['<>', 'estado_id', 1])->asArray()->all();
+        return Arrayhelper::map($droptions, 'id', 'description');
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -127,6 +134,13 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     public function getNombreUser()
     {
         return $this->user ? $this->user->nombre_completo : '- sin nombre -';
+    }
+
+    public static function getUserList()
+    {
+        $role_id_constante = 20;
+        $droptions = User::find()->orwhere(['role_id'=>$role_id_constante])->asArray()->all();
+        return Arrayhelper::map($droptions, 'id', 'nombre_completo');
     }
     /*public function getDescriptionSolicitud()
     {

@@ -81,19 +81,8 @@ MomentjsAsset::register($this);
                 ['label' => 'Gestionar Dependencia', 'url' => ['/dependencia/index']],                
                                
             ],
-        ];      
-    }
-    
-    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_administrativo) {
-        
-        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
-            'items' => [
-                ['label' => 'Mis solicitudes', 'url' => ['/solicitud/index']],                          
-            ],
-        ];      
-    }
-     if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_administrador) {
-      
+        ]; 
+
         $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
             'items' => [
                 ['label' => 'Mis solicitudes', 'url' => ['/solicitud/index']],  
@@ -101,6 +90,25 @@ MomentjsAsset::register($this);
             ],
         ];      
     }
+    
+    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_administrativo) {
+        
+        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
+            'items' => [
+                ['label' => 'Mis solicitudes', 'url' => ['/solicitud/index']],                                 
+            ],
+        ];      
+    }
+
+    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_mantenimientoLogistica) {
+        
+        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
+            'items' => [                  
+                ['label' => 'Tareas a realizar', 'url' => ['/asignacion-solicitud/index2']],                     
+            ],
+        ];      
+    }
+    
 
     if (Yii::$app->user->isGuest) {        
        

@@ -57,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'filter' => Html::activeDropDownList($searchModel, 'dependencia_id', ArrayHelper::map(Dependencia::find()->asArray()->all(), 'nombre_dependencia', 'nombre_dependencia'), ['class' => 'form-control', 'prompt' => '']),
             ],
             //'servicio_id',
+             'nombreUser', 
 
             [
             'attribute' => 'servicio_id',

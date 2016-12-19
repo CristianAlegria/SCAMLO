@@ -9,7 +9,7 @@ use yii\helpers\Html;
 $this->title = 'Actualizar';
 $this->params['breadcrumbs'][] = ['label' => 'Espacios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->espacio_id, 'url' => ['view', 'id' => $model->espacio_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="espacio-update">
 

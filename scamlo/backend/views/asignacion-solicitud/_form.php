@@ -22,13 +22,32 @@ use yii\bootstrap\Modal;
 
 <hr/>
 
-    <h4>Selecciona la solicitud y presiona el boton ver para seleccionar los trabajadores</h4>
+    <h4>Solicitudes</h4>
 
 <hr/>
 
     <?php Pjax::begin(); ?> 
 
     <?= $this->render('_solicitudes', ['model' => $searchModel]); ?>
+
+    <?php Pjax::end(); ?>
+
+    <p id="mensaje-solicitudes"></p>
+   
+</div>
+</div>
+<div class="asignacion-solicitud-trabajadores-form">
+    <div class="form-group" id="primero">
+
+<!--<hr/> Se encarga de hacer las lineas punteadas  --------------------   -->
+
+    <h4>Trabajadores que se encargaran de ejecutar las solicitudes</h4>
+
+<hr/>
+
+    <?php Pjax::begin(); ?> 
+
+    <?= $this->render('view-trabajadores', ['model' => $searchModel]); ?>
 
     <?php Pjax::end(); ?>
 
@@ -60,9 +79,13 @@ use yii\bootstrap\Modal;
 
     
 
-    <?= $form->field($model, 'usuario_id')->textInput() ?>
-    <?= $form->field($model, 'solicitud_id')->textInput() ?>
-    <!--<?= $form->field($model, 'solicitud_id')->textInput(['readonly' => true]) ?>-->
+    <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>
+    <!--<?//= $form->field($model, 'usuario_id')->textInput() ?> -->
+
+    <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>
+
+    <!--<?//= $form->field($model, 'solicitud_id')->textInput() ?> -->
+    <!--<?//= $form->field($model, 'solicitud_id')->textInput(['readonly' => true]) ?>-->
 
    <!-- <div class="form-group">
         <?//= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

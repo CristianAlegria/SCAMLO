@@ -25,8 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Nueva Asignación Solicitud', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php Pjax::begin(); ?>  
+    <p>
+    <?php
+        echo Html::a(Icon::show('file-pdf-o').'Click aqui. REPORTE EN PDF', ['/asignacion-solicitud/report'], [
+            'class'=>'btn btn-xs linksWithTarget', 
+            'target'=>'_blank', 
+        ]);
+    ?>
+</p>
+    <?php Pjax::begin(); 
+       ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
+    ?>  
     <?= GridView::widget([
+        'id' => 'asignacion-solicitud-grid',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [

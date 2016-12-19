@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2016 a las 14:15:26
+-- Tiempo de generación: 19-12-2016 a las 08:40:11
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -32,18 +32,19 @@ CREATE TABLE IF NOT EXISTS `asignacion_solicitud` (
   `estado_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `fecha_hora_inicio` datetime NOT NULL,
-  `fecha_hora_fin` datetime NOT NULL,
-  `equipo_reparado` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
-  `numero_inventario` int(11) NOT NULL,
-  `observaciones` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha_hora_fin` datetime DEFAULT NULL,
+  `equipo_reparado` varchar(80) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `numero_inventario` int(11) DEFAULT NULL,
+  `observaciones` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `asignacion_solicitud`
 --
 
 INSERT INTO `asignacion_solicitud` (`asignacion_id`, `solicitud_id`, `estado_id`, `usuario_id`, `fecha_hora_inicio`, `fecha_hora_fin`, `equipo_reparado`, `numero_inventario`, `observaciones`) VALUES
-(1, 13, 1, 55, '2016-05-20 22:10:29', '2016-05-20 22:10:30', 'Computador', 12123311, 'Quedo listo');
+(2, 14, 1, 57, '2016-12-19 02:33:30', '2016-12-19 02:35:22', 'Mesa', 787878, 'la Pinte'),
+(4, 19, 1, 57, '2016-12-19 00:47:27', '2016-12-19 01:41:07', 'Computador', 123456789, 'ya termine, un poco tardanza por el material que hacia falta');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `edificio` (
   `edificio_id` int(11) NOT NULL,
   `nombre_edificio` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
   `ubicacion` varchar(80) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Universidad del valle - sede yumbo'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `edificio`
@@ -84,7 +85,8 @@ CREATE TABLE IF NOT EXISTS `edificio` (
 INSERT INTO `edificio` (`edificio_id`, `nombre_edificio`, `ubicacion`) VALUES
 (0, 'No definido', 'Universidad del valle - sede yumbo'),
 (2, 'Nuevo', 'Al lado del antiguo'),
-(3, 'Martin Elias', 'Edificio nuevo');
+(3, 'Martin Elias', 'Edificio nuevo'),
+(4, 'dfdfdfdf', '');
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `espacio` (
   `capacidad` int(11) NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Universidad del valle - sede yumbo',
   `edificio_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `espacio`
@@ -113,7 +115,8 @@ INSERT INTO `espacio` (`espacio_id`, `nombre`, `codigo`, `capacidad`, `ubicacion
 (4, 'Aula de clases', '301', 40, '', 3),
 (5, 'Aula de clases', '302', 40, '', 3),
 (6, 'Auditorio', '709', 300, '', 3),
-(7, 'Biblioteca', '307', 50, '', 3);
+(7, 'Biblioteca', '307', 50, '', 3),
+(8, 'Auditorio', '901', 900, '', 3);
 
 -- --------------------------------------------------------
 
@@ -197,18 +200,18 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   `user_id` int(11) NOT NULL,
   `estado_id` int(11) NOT NULL DEFAULT '2',
   `descripcion_estado` varchar(255) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `solicitud`
 --
 
 INSERT INTO `solicitud` (`id`, `dependencia_id`, `servicio_id`, `description`, `espacio_id`, `descripcion_otros`, `numero_piso`, `fecha`, `user_id`, `estado_id`, `descripcion_estado`) VALUES
-(13, 2, 4, 'El ventilador no funciona', 3, '', 1, '2016-11-21', 1, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'),
 (14, 4, 2, 'Cambiar Mesa', 1, '', 2, '2016-11-21', 1, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'),
 (15, 3, 4, 'Reparacion mesas', 7, '', 3, '2016-11-22', 1, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'),
-(16, 2, 4, 'Ventilador Dañado', 1, '', 1, '2016-11-23', 1, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'),
-(18, 3, 3, 'Dos computadores Y un televisor', 7, '', 3, '2016-11-24', 1, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada');
+(16, 2, 4, 'Ventilador Dañado', 1, '', 1, '2016-11-23', 1, 1, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'),
+(18, 3, 3, 'Dos computadores Y un televisor', 7, '', 3, '2016-11-24', 1, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada'),
+(19, 2, 3, 'Necesito audio bafles grandes', 1, '', 2, '2016-12-19', 54, 2, 'Tu solicitud ha sido enviada y actualmente se encuentra a la espera de ser procesada');
 
 -- --------------------------------------------------------
 
@@ -269,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `status_id` smallint(6) NOT NULL DEFAULT '10',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -277,8 +280,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `nombre_completo`, `cedula`, `telefono`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `role_id`, `status_id`, `created_at`, `updated_at`) VALUES
 (1, 'Carlos Arango', '123456', '4447272', 'ZxDnEj6KZD2-1ZFnnc11_b-VKwGQGafM', '$2y$13$gZqgY3crxvoQJKQYYQ7xq./YdPhnIS3cl159QbeklP4ittHn3WJ1G', NULL, 'carlos.f.arango@prueba.com', 40, 10, '2016-05-20 22:10:29', '2016-05-20 22:10:29'),
-(54, 'Jose Lopez Marin', '12121212', '8888888888', 'U8_vNtoprqOVFblmnVIEaMTsqqZxFetI', '$2y$13$y/a9tLn8vwieV7C4.CksIu/MRw1TYQ8KxW2c2jsfWaK.WqM7XTuvm', NULL, 'jose@hotmail.com', 30, 10, '2016-10-10 20:51:29', '2016-11-15 17:27:00'),
-(55, 'Yovaldino Ipia', '789', '1234567', 'fHhf-UhwOULeOa_m6Q-Bl6IltxMJ7eu_', '$2y$13$UBdYiXgqBzd4omx4ZWFZBOe1lQ1zRNTUxKRDqjwEMbvJnJioIpt0i', NULL, 'joval@hotmail.com', 20, 10, '2016-11-24 16:11:34', '2016-11-24 16:11:34');
+(54, 'Jose Lopez Marin', '12121212', '8888888888', 'U8_vNtoprqOVFblmnVIEaMTsqqZxFetI', '$2y$13$ocsl2OzR9ZjgO43.28ZEsORSX76NxBPJlaSYxURrEcgPO.gfncT4G', NULL, 'jose@hotmail.com', 30, 10, '2016-10-10 20:51:29', '2016-12-17 21:37:38'),
+(55, 'Yovaldino Ipia', '789', '1234567', 'fHhf-UhwOULeOa_m6Q-Bl6IltxMJ7eu_', '$2y$13$37YDh4hqij9m8tIXj0YB2.i6fJjBuyv1YT8Hsyu5fKGiwNWlH/7f6', NULL, 'joval@hotmail.com', 20, 10, '2016-11-24 16:11:34', '2016-12-19 02:23:52'),
+(57, 'Pablo', '456', '9999999', 'Vj2c068yap_5TDpPwGJSivplm0G92nQF', '$2y$13$6FiRGJj7pJAe3r3nDRZ.BO3TfFCRdFOumyMTWJarXGjP3r6s8uGvm', NULL, 'pablo@hotmail.com', 20, 10, '2016-12-19 00:47:21', '2016-12-19 02:24:51');
 
 --
 -- Índices para tablas volcadas
@@ -355,6 +359,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asignacion_solicitud`
+--
+ALTER TABLE `asignacion_solicitud`
+  MODIFY `asignacion_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `dependencia`
 --
 ALTER TABLE `dependencia`
@@ -363,12 +372,12 @@ ALTER TABLE `dependencia`
 -- AUTO_INCREMENT de la tabla `edificio`
 --
 ALTER TABLE `edificio`
-  MODIFY `edificio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `edificio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `espacio`
 --
 ALTER TABLE `espacio`
-  MODIFY `espacio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `espacio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -388,7 +397,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `status`
 --
@@ -403,7 +412,7 @@ ALTER TABLE `tipo_espacio`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=58;
 --
 -- Restricciones para tablas volcadas
 --

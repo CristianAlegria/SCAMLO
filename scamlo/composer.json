@@ -27,7 +27,7 @@
         "wbraganca/yii2-dynamicform": "*",
         "conquer/momentjs": "*",
         "kartik-v/yii2-export": "*",
-        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-mpdf": "*",        
         "kartik-v/yii2-grid": "@dev"
     },
     "require-dev": {

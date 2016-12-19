@@ -17,6 +17,7 @@ class AsignacionSolicitudSearch extends AsignacionSolicitud
      */
 
     public $globalSearch;
+    public $role_id_constante = 40;
 
     public function rules()
     {
@@ -88,7 +89,7 @@ class AsignacionSolicitudSearch extends AsignacionSolicitud
 
         return $dataProvider;
     }*/
-        public function search($params)
+        public function search($params,$user_id,$role_id)
     {
         $query = AsignacionSolicitud::find();
 
@@ -107,10 +108,13 @@ class AsignacionSolicitudSearch extends AsignacionSolicitud
         }
 
         
-      //$query->joinWith('user');
+      $query->joinWith('user');
       $query->joinWith('solicitud');
       $query->joinWith('estado');
       //$query->where(['user_id'=> (Yii::$app->user->identity->id)]);
+      if ($role_id!=$this->role_id_constante) {
+           $query->where(['user.id'=>$user_id]);
+        }
 
       $query->andFilterWhere([
             'asignacion_id' => $this->asignacion_id,

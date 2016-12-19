@@ -47,7 +47,7 @@ class Solicitud extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'numero_piso', 'fecha'], 'required'],
+            [['description', 'numero_piso', 'fecha','espacio_id','dependencia_id','servicio_id'], 'required'],
             [['numero_piso', 'user_id', 'estado_id'], 'integer'],
             [['description', 'descripcion_otros', 'descripcion_estado'], 'string', 'max' => 255],
             [['fecha'], 'string', 'max' => 48],

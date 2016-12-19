@@ -30,7 +30,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores_tablaTrabajadores
             'attribute' => 'email',
             'value' => 'email',
             ],
-            [
+           /* [
             'class' => 'yii\grid\CheckboxColumn',
             // you may configure additional properties here
                 //'visible' => false,
@@ -40,7 +40,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores_tablaTrabajadores
                 return ['value' => $model->id,
                 'title' => Yii::t('app', 'Selecciona un trabajador'),];
                 }
-            ],            
+            ], */           
         ],
     ]); 
 ?>  

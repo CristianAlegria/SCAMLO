@@ -13,6 +13,7 @@ use backend\models\Solicitud;
 class SolicitudSearch extends Solicitud
 {
      public $globalSearch;
+     public $role_id_constante = 40;
      
     /**
      * @inheritdoc
@@ -49,7 +50,7 @@ class SolicitudSearch extends Solicitud
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params,$user_id,$role_id)
     {
         $query = Solicitud::find();
 
@@ -73,6 +74,11 @@ class SolicitudSearch extends Solicitud
         $query->joinWith('dependencia');
         $query->joinWith('servicio');
         $query->joinWith('espacio');
+        $query->joinWith('user');
+        if ($role_id!=$this->role_id_constante) {
+           $query->where(['user.id'=>$user_id]);
+        }
+       
 
 
         // grid filtering conditions

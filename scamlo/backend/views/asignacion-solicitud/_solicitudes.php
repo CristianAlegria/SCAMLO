@@ -35,7 +35,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
             'attribute' => 'description',
             'value' => 'description',
             ],
-            [
+           /* [
             'class' => 'yii\grid\CheckboxColumn',
             // you may configure additional properties here
                 //'visible' => false,
@@ -45,8 +45,8 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
                 return ['value' => $model->id,
                 'title' => Yii::t('app', 'Selecciona un espacio'),];
                 }
-            ],
-            ['class' => 'yii\grid\ActionColumn',
+            ],*/
+            /*['class' => 'yii\grid\ActionColumn',
             'template' => '{view}',
                 //'visible' => false,
                 'header' => 'Asignar trabajadores',
@@ -63,7 +63,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
                         ]);
                     },                    
                 ],
-            ],
+            ],*/
         ],
     ]); 
 ?>  

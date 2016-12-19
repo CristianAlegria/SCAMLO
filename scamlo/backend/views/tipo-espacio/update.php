@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Actualizar';
 $this->params['breadcrumbs'][] = ['label' => 'Tipo de Espacios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->tipo_espacio_id, 'url' => ['view', 'id' => $model->tipo_espacio_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tipo-espacio-update">
 

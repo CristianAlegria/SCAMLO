@@ -13,6 +13,7 @@ use yii\web\Response;
 use yii\widgets\ActiveForm;
 use \yii\db\IntegrityException;
 use kartik\icons\Icon;
+use common\models\User;
 
 /**
  * SolicitudController implements the CRUD actions for Solicitud model.
@@ -75,7 +76,7 @@ class SolicitudController extends Controller
     public function actionIndex()
     {
         $searchModel = new SolicitudSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,Yii::$app->user->identity->id,Yii::$app->user->identity->role_id);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

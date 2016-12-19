@@ -48,9 +48,20 @@ class AsignacionSolicitudController extends Controller
     public function actionIndex()
     {
         $searchModel = new AsignacionSolicitudSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,Yii::$app->user->identity->id,Yii::$app->user->identity->role_id);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionIndex2()
+    {
+        $searchModel = new AsignacionSolicitudSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,Yii::$app->user->identity->id,Yii::$app->user->identity->role_id);
+
+        return $this->render('index2', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -114,17 +125,25 @@ class AsignacionSolicitudController extends Controller
      * @return mixed
      */
     public function actionUpdate($id)
-    {
+    {                 
+        
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->asignacion_id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+                if (Yii::$app->user->identity->role_id==40) {
+                    return $this->render('update', [
+                        'model' => $model,
+                    ]);
+                }else{
+                     return $this->render('update2', [
+                        'model' => $model,
+                    ]);
+                }
         }
-    }
+        
+    }    
 
     /**
      * Deletes an existing AsignacionSolicitud model.
@@ -153,5 +172,51 @@ class AsignacionSolicitudController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionReport() {
+ 
+        $table = new AsignacionSolicitud;
+       // $model = $table->find()->where(['estado_id'=>'3'])->all();
+        $model = $table->find()->all();
+
+        $content = $this->renderPartial('_reportView', ['model' => $model,]);
+         
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_CORE,
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+            // your html content input
+            'content' => $content, 
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+             // call mPDF methods on the fly
+            'methods' => [
+                'SetHeader'=>['Realizado por: '.Yii::$app->user->identity->nombre_completo.' en: '.date("F j, Y")],
+                //'SetFooter'=>[Html::img('@web/images/zzz.jpg')],
+                'SetFooter'=>['Sede Yumbo 
+                                : yumbo@univalle.edu.co Tel: +57 2 6699323 
+                                Calle 3N 2N-17 Barrio las vegas
+                                Universidad del Valle
+                                Yumbo, Colombia
+                                ©2016'],
+            ]
+        ]);
+ 
+        // http response
+        $response = Yii::$app->response;
+        $response->format = \yii\web\Response::FORMAT_RAW;
+        $headers = Yii::$app->response->headers;
+        $headers->add('Content-Type', 'application/pdf');
+ 
+        // return the pdf output as per the destination setting
+        return $pdf->render();
     }
 }

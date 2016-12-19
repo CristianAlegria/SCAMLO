@@ -105,6 +105,7 @@ class UserSearch extends User
         
         $query->joinWith('status');
         $query->joinWith('role');
+        $query->where(['role.role_value'=> '20']);
         
 
         $query->orFilterWhere(['like', 'id', $this->globalSearch])

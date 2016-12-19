@@ -27,7 +27,7 @@ use kartik\icons\Icon;
 
     <?= $form->field($model, 'espacio_id')->dropDownList($model->EspacioList,[ 'prompt' => 'Elige el espacio' ]);?>
 
-    <?= $form->field($model, 'descripcion_otros')->textArea(['rows' => 3/*,'disabled'=>'disabled'*/]) ?> 
+    <?= $form->field($model, 'descripcion_otros')->textArea(['rows' => 3,'placeholder' => "descripción de otro espacio es opcional"])?> 
 
     <?= $form->field($model, 'numero_piso')->textInput() ?>
 
