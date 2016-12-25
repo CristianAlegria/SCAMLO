@@ -21,6 +21,9 @@ $this->title = 'SCAMLO';
           <div class="carousel-inner" role="listbox">
 
             <div class="item active" align="center">
+              <img src="../web/images/principal.jpg" alt="Inicio">
+            </div>
+            <div class="item active" align="center">
               <img src="../web/images/univalle_frente.jpg" alt="Inicio">
             </div>
 
@@ -39,6 +42,9 @@ $this->title = 'SCAMLO';
             </div>
             <div class="item" align="center">
               <img src="../web/images/rodrigo.jpg" alt="Inicio">
+            </div>
+             <div class="item" align="center">
+              <img src="../web/images/final.jpg" alt="Inicio">
             </div>
 
           </div>
