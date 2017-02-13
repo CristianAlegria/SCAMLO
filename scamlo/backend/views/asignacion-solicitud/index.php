@@ -14,7 +14,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\search\AsignacionSolicitudSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Solicitudes de mantenimiento y logistica asignadas';
+$this->title = 'Ver tareas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="asignacion-solicitud-index">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Nueva Asignación Solicitud', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Asignar tareas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <p>
     <?php

@@ -33,14 +33,19 @@ MomentjsAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class = "header">
+   <p class="pull-left"><?=Html::img('@web/images/logo.jpg')?></p>  
+   <br> 
+   <p class="pull-right"><?=Html::img('@web/images/icono-mantenimiento.png')?></i></p> 
    <h2 id="header">
-      Universidad del Valle <br>
-      <small>Sede - Yumbo</small>
+    <small><br></br></small>
+
+      <!--Universidad del Valle <br>
+      <small>Sede - Yumbo</small> -->     
    </h2>
 </div>
 
-<div class="wrap">
 
+<div class="wrap">    
     <?php
 
     $es_administrador = ValueHelpers::getRoleValue('Administrador');      
@@ -85,8 +90,8 @@ MomentjsAsset::register($this);
 
         $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
             'items' => [
-                ['label' => 'Mis solicitudes', 'url' => ['/solicitud/index']],  
-                ['label' => 'Asignar trabajadores a solicitudes de mantenimiento y logistica', 'url' => ['/asignacion-solicitud/index']],                           
+                ['label' => 'Ver solicitudes', 'url' => ['/solicitud/index']],  
+                ['label' => 'Ver tareas', 'url' => ['/asignacion-solicitud/index']],                           
             ],
         ];      
     }
@@ -102,9 +107,9 @@ MomentjsAsset::register($this);
 
     if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_mantenimientoLogistica) {
         
-        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
+        $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar mis tareas',  
             'items' => [                  
-                ['label' => 'Tareas a realizar', 'url' => ['/asignacion-solicitud/index2']],                     
+                ['label' => 'Ver mis tareas', 'url' => ['/asignacion-solicitud/index2']],                     
             ],
         ];      
     }
@@ -134,6 +139,7 @@ MomentjsAsset::register($this);
 
     ?>
 
+
     <div class="container" id="main-content">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -146,17 +152,49 @@ MomentjsAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer">   
+
     <div class="container">
         <div class="footer-logo">
-            <p class="pull-left"><?=Html::img('@web/images/logoUnivalle.jpg')?> Universidad del Valle <?= date('Y') ?></p>
-
-            <p class="pull-right"><br> &copy; Derechos reservados por el equipo de desarrollo "SCAMLO" </p>
+            
+           <ul class="list-inline">
+                <li>
+                   <p class="pull-left"><?=Html::img('@web/images/logoUnivalle-footer.png')?></i></p>
+                </li>
+                <li>
+                    <p>UNIVERSIDAD DEL VALLE <br> Sede Yumbo</i></p>
+                </li>
+                <li>
+                    <p >Dirección:<br>Calle 3N 2N-17 Barrio las vegas<br> Yumbo, Colombia</i></p>
+                </li>
+                <li>
+                     <p>PBX: <br>+57 2 6699323</i></p>
+                </li>                
+                              
+            </ul>            
         </div>
-    </div>
+    </div> 
+</footer>
+<!--<footer class="footer2">  
+
+    <div class="container">
+        <div class="footer-logo">        
+                              
+                      
+        </div>
+    </div> 
+</footer>-->
+<footer class="footer3">  
+
+    <div class="container">
+        <div class="footer-logo">               
+            <p align="center">Derechos reservados por: AlegriaSoft Corporation</i></p>                     
+        </div>
+    </div> 
 </footer>
 
 <?php $this->endBody() ?>
+
 </body>
 </html>
 <?php $this->endPage() ?>

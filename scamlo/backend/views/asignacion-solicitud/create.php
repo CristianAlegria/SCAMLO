@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AsignacionSolicitud */
 
-$this->title = 'Asignacion de trabajadores a Solicitudes';
+$this->title = 'Asignacion de tareas a trabajadores';
 $this->params['breadcrumbs'][] = ['label' => 'Asignar trabajadores a solicitudes de mantenimiento y logistica', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -14,8 +14,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\search\AsignacionSolicitudSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tareas a realizar';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Mis tareas';
+$this->params['breadcrumbs'][] = "Ver mis tareas";
 ?>
 <div class="asignacion-solicitud-indexTrabajador">
 

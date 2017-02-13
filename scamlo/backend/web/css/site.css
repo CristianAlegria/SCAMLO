@@ -40,16 +40,36 @@ hr {
   border-radius: 0px;
   width: 85%;
 }
-
+/*235,30,0,1*/
 .footer {
-  height: 80px;
-  background: rgb(255,0,0);
+  height: 200px;
+  background: #D51B23;/* Color del footer que esta abajo de la pagina*/
   /*background-color: #f5f5f5;*/
   border-top: 1px solid #ddd;
   padding-top: 15px;
   color: #ffffff;
   border-radius: 0px;
 }
+.footer2 {
+  height: 100px;
+  background: #58595B;/* Color del footer que esta abajo de la pagina*/
+  /*background-color: #f5f5f5;*/
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  color: #ffffff;
+  border-radius: 0px;
+}
+.footer3 {
+  height: 50px;
+  background: #303030;/* Color del footer que esta abajo de la pagina*/
+  /*background-color: #f5f5f5;*/
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  color: #ffffff;
+  border-radius: 0px;
+}
+
+
 
 .not-set {
   color: #c55;
@@ -116,7 +136,7 @@ a.desc:after {
 }
 
 .navbar {
-  background: rgb(255,0,0);
+  background: rgba(235,30,0,1);/* Color del menu*/
   border-color: #c0392b;
   border-radius: 0px;
 }
@@ -299,8 +319,9 @@ a.desc:after {
 }
  
 .header{
-  text-align: center;
+  text-align:left;
   z-index: 100;
+  color: #ffffff
 }
 
 .panel-default > .panel-heading {

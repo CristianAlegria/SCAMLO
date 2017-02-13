@@ -1,21 +1,35 @@
 <?php
 
+use backend\assets\AppAsset;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use common\widgets\Alert;
+use common\models\ValueHelpers;
+use kartik\icons\Icon;
+use yii\helpers\Url;
+use yii\widgets\Pjax;
+use conquer\momentjs\MomentjsAsset;
+
 /* @var $this yii\web\View */
 
 $this->title = 'SCAMLO';
 ?>
-<div class="site-index">
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div class="site-index">          
+          <h2>Sede Yumbo</h2>           
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
-          </ol>
+
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>
+              <li data-target="#myCarousel" data-slide-to="5"></li>
+            </ol>
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
@@ -58,7 +72,7 @@ $this->title = 'SCAMLO';
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-        </div>
+        </div>        
 
    <!-- <div class="body-content">
 
@@ -96,4 +110,5 @@ $this->title = 'SCAMLO';
         </div>
 
     </div>-->
+
 </div>
