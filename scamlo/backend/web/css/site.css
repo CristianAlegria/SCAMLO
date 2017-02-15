@@ -10,7 +10,7 @@ hr {
 }
 
 #myCarousel{
-  background: rgb(255,0,0);
+  background-color: rgba(235,30,0,1);
 }
 
 .event-form-calendario .fc-future{
@@ -43,7 +43,7 @@ hr {
 /*235,30,0,1*/
 .footer {
   height: 200px;
-  background: #D51B23;/* Color del footer que esta abajo de la pagina*/
+  background-color: rgba(235,30,0,1);
   /*background-color: #f5f5f5;*/
   border-top: 1px solid #ddd;
   padding-top: 15px;
@@ -61,7 +61,7 @@ hr {
 }
 .footer3 {
   height: 50px;
-  background: #303030;/* Color del footer que esta abajo de la pagina*/
+  background: #6D6E71;/* Color del footer que esta abajo de la pagina*/
   /*background-color: #f5f5f5;*/
   border-top: 1px solid #ddd;
   padding-top: 15px;
@@ -136,7 +136,7 @@ a.desc:after {
 }
 
 .navbar {
-  background: rgba(235,30,0,1);/* Color del menu*/
+  background-color: rgba(235,30,0,1);/* Color del menu*/
   border-color: #c0392b;
   border-radius: 0px;
 }

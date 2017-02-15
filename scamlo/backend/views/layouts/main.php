@@ -24,16 +24,19 @@ MomentjsAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+ <link rel="shortcut icon" href="../web/icono.png">
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class = "header">
-   <p class="pull-left"><?=Html::img('@web/images/logo.jpg')?></p>  
+<div class = "header">   
+   <p class="pull-left"><?=Html::img('@web/images/encabezado.png')?></p>
    <br> 
    <p class="pull-right"><?=Html::img('@web/images/icono-mantenimiento.png')?></i></p> 
    <h2 id="header">
@@ -43,7 +46,6 @@ MomentjsAsset::register($this);
       <small>Sede - Yumbo</small> -->     
    </h2>
 </div>
-
 
 <div class="wrap">    
     <?php
@@ -159,7 +161,7 @@ MomentjsAsset::register($this);
             
            <ul class="list-inline">
                 <li>
-                   <p class="pull-left"><?=Html::img('@web/images/logoUnivalle-footer.png')?></i></p>
+                   <p class="pull-left"><?=Html::img('@web/images/icono.png')?></i></p>
                 </li>
                 <li>
                     <p>UNIVERSIDAD DEL VALLE <br> Sede Yumbo</i></p>
@@ -188,7 +190,7 @@ MomentjsAsset::register($this);
 
     <div class="container">
         <div class="footer-logo">               
-            <p align="center">Derechos reservados por: AlegriaSoft Corporation</i></p>                     
+            <p align="center">Derechos reservados por: &copy AlegriaSoft</i></p>                     
         </div>
     </div> 
 </footer>

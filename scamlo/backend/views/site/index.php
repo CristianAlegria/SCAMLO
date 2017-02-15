@@ -18,48 +18,34 @@ $this->title = 'SCAMLO';
 ?>
 
 <div class="site-index">          
-          <h2>Sede Yumbo</h2>           
+          <h2>Universidad del Valle - Sede Yumbo</h2>           
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
 
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
+            <ol class="carousel-indicators">             
+              <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
               <li data-target="#myCarousel" data-slide-to="2"></li>
               <li data-target="#myCarousel" data-slide-to="3"></li>
-              <li data-target="#myCarousel" data-slide-to="4"></li>
-              <li data-target="#myCarousel" data-slide-to="5"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>              
             </ol>
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
 
             <div class="item active" align="center">
-              <img src="../web/images/principal.jpg" alt="Inicio">
+              <img src="../web/images/1.png" alt="Inicio">
             </div>
-            <div class="item active" align="center">
-              <img src="../web/images/univalle_frente.jpg" alt="Inicio">
+            <div class="item" align="center">
+              <img src="../web/images/2.png" alt="Inicio">
             </div>
 
             <div class="item" align="center">
-              <img src="../web/images/pablo.jpg" alt="Inicio">
+              <img src="../web/images/3.png" alt="Inicio">
             </div>
 
             <div class="item" align="center">
-              <img src="../web/images/univalle_lateral.jpg" alt="Inicio">
-            </div>
-            <div class="item" align="center">
-              <img src="../web/images/duber.jpg" alt="Inicio">
-            </div>
-            <div class="item" align="center">
-              <img src="../web/images/univalle_frente2.jpg" alt="Inicio">
-            </div>
-            <div class="item" align="center">
-              <img src="../web/images/rodrigo.jpg" alt="Inicio">
-            </div>
-             <div class="item" align="center">
-              <img src="../web/images/final.jpg" alt="Inicio">
-            </div>
+              <img src="../web/images/4.png" alt="Inicio">
+            </div>  
 
           </div>
 
