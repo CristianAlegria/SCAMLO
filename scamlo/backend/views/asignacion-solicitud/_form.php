@@ -15,46 +15,26 @@ use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AsignacionSolicitud */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="asignacion-solicitud-form">
     <div class="form-group" id="primero">
 
-<hr/>
+        <hr/>
+            <h4>Asigne los trabajadores a cada solicitud con la opcion "asignar trabajador" de la columna trabajadores.</h4>
+        <hr/>
 
-    <h4>Solicitudes</h4>
+        <?php Pjax::begin(); ?> 
 
-<hr/>
+        <?= $this->renderAjax('_solicitudes', ['model' => $searchModel]); ?>
 
-    <?php Pjax::begin(); ?> 
+        <?php Pjax::end(); ?>
 
-    <?= $this->render('_solicitudes', ['model' => $searchModel]); ?>
-
-    <?php Pjax::end(); ?>
-
-    <p id="mensaje-solicitudes"></p>
-   
-</div>
-</div>
-<div class="asignacion-solicitud-trabajadores-form">
-    <div class="form-group" id="primero">
-
-<!--<hr/> Se encarga de hacer las lineas punteadas  --------------------   -->
-
-    <h4>Trabajadores que se encargaran de ejecutar las solicitudes</h4>
-
-<hr/>
-
-    <?php Pjax::begin(); ?> 
-
-    <?= $this->render('view-trabajadores', ['model' => $searchModel]); ?>
-
-    <?php Pjax::end(); ?>
-
-    <p id="mensaje-solicitudes"></p>
-   
-</div>
-    
+        <p id="mensaje-solicitudes"></p>
+       
+   </div>
+</div>    
     
     <?php $form = ActiveForm::begin(); ?>
    

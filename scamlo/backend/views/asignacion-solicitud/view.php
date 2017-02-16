@@ -10,7 +10,7 @@ use kartik\icons\Icon;
 
 $this->title = $model->nombreSolicitud;
 $show_this_nav = PermissionHelpers::requireMinimumRole('Administrativo');
-$this->params['breadcrumbs'][] = ['label' => 'Asignar trabajadores a solicitudes de mantenimiento y logistica', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ver tareas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="asignacion-solicitud-view">

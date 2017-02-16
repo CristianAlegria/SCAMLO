@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+      
     <p>
         <?= Html::a('Asignar tareas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -64,9 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'user_id',
           'nombreUser',
           'fecha_hora_inicio',
-          'fecha_hora_fin', 
-
-            
+          'fecha_hora_fin',            
 
             [
             'attribute' => 'Estado',

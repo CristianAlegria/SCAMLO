@@ -92,9 +92,9 @@ class AsignacionSolicitudController extends Controller
         $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->asignacion_id]);
+            return $this->redirect(['index', 'id' => $model->asignacion_id]);
         } else {
-            return $this->renderAjax('create', [
+            return $this->render('create', [
                 'model' => $model,
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,

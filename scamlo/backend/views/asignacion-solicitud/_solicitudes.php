@@ -12,10 +12,16 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model backend\models\search\EspacioSearch */
 /* @var $form yii\widgets\ActiveForm */
+
+
 $searchModel = new SolicitudSearch();
 $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
 ?>
+
 <div class="solicitudes-search">
+<?php Pjax::begin(); 
+      ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
+?> 
     
 <?= GridView::widget([
         'id' => 'solicitud-grid',
@@ -35,36 +41,28 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
             'attribute' => 'description',
             'value' => 'description',
             ],
-           /* [
-            'class' => 'yii\grid\CheckboxColumn',
-            // you may configure additional properties here
-                //'visible' => false,
-                'header' => 'Selección',
-                'multiple'=> false,
-                'checkboxOptions' => function ($model, $key, $index, $column) {
-                return ['value' => $model->id,
-                'title' => Yii::t('app', 'Selecciona un espacio'),];
-                }
-            ],*/
-            /*['class' => 'yii\grid\ActionColumn',
-            'template' => '{view}',
-                //'visible' => false,
-                'header' => 'Asignar trabajadores',
+           ['class' => 'yii\grid\ActionColumn',
+                'template' => '{update}', /*&nbsp{view}',*/
+                'header' => 'Trabajadores',
                 'buttons' => [
-                    'view' => function ($url, $model, $key) {
-                        return Html::a(Icon::show('eye').'Ver', '#', [
-                            'id' => 'activity-index-link',
-                            'title' => Yii::t('app', 'Ver Trabajadores'),
-                            'class'=>'btn btn-danger btn-xs',
-                            'data-toggle' => 'modal',
-                            'data-target' => '#modal',
-                            'data-url' => Url::to(['disponibilidad', 'id' => $model->id]),
-                            'data-pjax' => '0',
-                        ]);
-                    },                    
-                ],
-            ],*/
+                           'update' => function ($url, $model, $key) {
+                            return Html::a(Icon::show('male'),$url, [
+                                'id' => 'activity-index-link',
+                                'title' => Yii::t('app', 'asignar trabajador'),
+                                'class'=>'btn btn-danger btn-xs',                                
+                                ]);
+                        },
+                        /*'view' => function ($url, $model){
+                            return Html::a(Icon::show('eye'), $url, [
+                                'title' => Yii::t('app', 'Ver asignación'),
+                                'class'=>'btn btn-danger btn-xs',
+                                ]);
+                        },*/
+                ], 
+
+            ],
         ],
     ]); 
 ?>  
+ <?php Pjax::end(); ?>
 </div>

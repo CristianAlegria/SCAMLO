@@ -157,32 +157,31 @@ MomentjsAsset::register($this);
 <footer class="footer">   
 
     <div class="container">
+
         <div class="footer-logo">
             
-           <ul class="list-inline">
+           <ul class="list-inline">          
+                
                 <li>
-                   <p class="pull-left"><?=Html::img('@web/images/icono.png')?></i></p>
-                </li>
-                <li>
-                    <p>UNIVERSIDAD DEL VALLE <br> Sede Yumbo</i></p>
-                </li>
-                <li>
-                    <p >Dirección:<br>Calle 3N 2N-17 Barrio las vegas<br> Yumbo, Colombia</i></p>
-                </li>
-                <li>
-                     <p>PBX: <br>+57 2 6699323</i></p>
+                   <p class="pull-left"><?=Html::img('@web/images/logoUnivalle-footer.png')?></i></p>
                 </li>                
-                              
+                <li>
+                    <p>UNIVERSIDAD DEL VALLE <br> Sede Yumbo <br>Calle 3N 2N-17 Barrio las vegas<br> Yumbo, Colombia<br>+57 2 6699323</i></p>
+                </li>  
+
+                <li>
+                   <p class="pull-right"><?=Html::img('@web/images/icono.png')?></i></p>
+                </li>                               
+                                            
             </ul>            
         </div>
     </div> 
 </footer>
+
 <!--<footer class="footer2">  
 
     <div class="container">
-        <div class="footer-logo">        
-                              
-                      
+        <div class="footer-logo">                      
         </div>
     </div> 
 </footer>-->

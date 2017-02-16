@@ -91,6 +91,23 @@ $("form#solicitud-form").on("beforeSubmit", function(e) {
     return false;
 });
 
+$("solicitudes-search").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+    form.attr("action")+"&submit=true",
+    form.serialize()
+    )
+    .done(function(result) {
+        form.parent().html(result.message);
+        $.pjax.reload({container:"#solicitud-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
 
 // obtener la id del formulario y establecer el manejador de eventos Espacios
 $("form#espacio-form").on("beforeSubmit", function(e) {

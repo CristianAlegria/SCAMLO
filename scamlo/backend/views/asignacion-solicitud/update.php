@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AsignacionSolicitud */
 
-$this->title = 'Actualizar Asignacion Solicitud: ';
-$this->params['breadcrumbs'][] = ['label' => 'Asignacion Solicitudes', 'url' => ['index']];
+$this->title = 'Actualizar Asignacion: ';
+$this->params['breadcrumbs'][] = ['label' => 'Ver tareas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->asignacion_id, 'url' => ['view', 'id' => $model->asignacion_id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
