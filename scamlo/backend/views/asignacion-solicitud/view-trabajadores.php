@@ -22,10 +22,8 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores_tablaTrabajadores
         'id' => 'solicitud_trabajador-grid',
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
-            'nombre_completo',
-            'cedula', 
-            'telefono',                    
+            //'id',
+            'nombre_completo',                       
             [
             'attribute' => 'email',
             'value' => 'email',

@@ -222,7 +222,7 @@ $(document).on('click', '#actualizar-clave', (function(){
     return true;
 }));
 
-// obtener la id del formulario y establecer el manejador de eventos Calendario
+
 $("form#asignacion-solicitud-form-trabajadores").on("beforeSubmit", function(e) {
     var form = $(this);
     $.post(
@@ -239,6 +239,7 @@ $("form#asignacion-solicitud-form-trabajadores").on("beforeSubmit", function(e) 
     e.stopImmediatePropagation();
     return false;
 });
+
 
 
 

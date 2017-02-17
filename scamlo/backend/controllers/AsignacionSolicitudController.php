@@ -143,6 +143,22 @@ class AsignacionSolicitudController extends Controller
                 }
         }
         
+    } 
+    public function actionCrear($submit = false)
+    {
+        $model = new AsignacionSolicitud();
+        $searchModel = new SolicitudSearch();
+        $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index', 'id' => $model->asignacion_id]);
+        } else {
+            return $this->render('crear', [
+                'model' => $model,
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }    
 
     /**
@@ -206,7 +222,7 @@ class AsignacionSolicitudController extends Controller
                                 Calle 3N 2N-17 Barrio las vegas
                                 Universidad del Valle
                                 Yumbo, Colombia
-                                ©2016'],
+                                ©2017'],
             ]
         ]);
  

@@ -42,10 +42,10 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
             'value' => 'description',
             ],
            ['class' => 'yii\grid\ActionColumn',
-                'template' => '{update}', /*&nbsp{view}',*/
+                'template' => '{crear}', /*&nbsp{view}',*/
                 'header' => 'Trabajadores',
                 'buttons' => [
-                           'update' => function ($url, $model, $key) {
+                           'crear' => function ($url, $model, $key) {
                             return Html::a(Icon::show('male'),$url, [
                                 'id' => 'activity-index-link',
                                 'title' => Yii::t('app', 'asignar trabajador'),
