@@ -34,6 +34,7 @@ use kartik\icons\Icon;
     <?= $form->field($model, 'role_id')->dropDownList($model->roleList,[ 'prompt' => 'Por favor elige uno' ]);?>
 
     <div id="clave">
+    
 
     <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true, 'readonly' => true])?>
 

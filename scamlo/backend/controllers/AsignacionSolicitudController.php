@@ -153,10 +153,8 @@ class AsignacionSolicitudController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'id' => $model->asignacion_id]);
         } else {
-            return $this->render('crear', [
-                'model' => $model,
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
+            return $this->renderAjax('crear', [
+                'model' => $model,                
             ]);
         }
     }    

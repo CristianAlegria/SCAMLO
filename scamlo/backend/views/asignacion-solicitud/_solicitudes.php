@@ -8,6 +8,7 @@ use yii\widgets\Pjax;
 use yii\grid\GridView;
 use kartik\icons\Icon;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\search\EspacioSearch */
@@ -44,25 +45,41 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
            ['class' => 'yii\grid\ActionColumn',
                 'template' => '{crear}', /*&nbsp{view}',*/
                 'header' => 'Trabajadores',
-                'buttons' => [
-                           'crear' => function ($url, $model, $key) {
-                            return Html::a(Icon::show('male'),$url, [
+                'buttons' => [                          
+                           /* 'crear' => function ($url, $model, $key) {
+                            return Html::a(Icon::show('male'), '#', [
                                 'id' => 'activity-index-link',
                                 'title' => Yii::t('app', 'asignar trabajador'),
-                                'class'=>'btn btn-danger btn-xs',                                
+                                'class'=>'btn btn-danger btn-xs',
+                                'data-toggle' => 'modal',
+                                'data-target' => '#modal',
+                                'data-url' => Url::to(['crear', 'id' => $model->id]),
+                                'data-pjax' => '0',
                                 ]);
-                        },
-                        /*'view' => function ($url, $model){
-                            return Html::a(Icon::show('eye'), $url, [
-                                'title' => Yii::t('app', 'Ver asignación'),
+                },*/
+
+                        'crear' => function ($url, $model){
+                            return Html::a(Icon::show('male'), $url, [
+                                'title' => Yii::t('app', 'asignar trabajador'),
                                 'class'=>'btn btn-danger btn-xs',
                                 ]);
-                        },*/
+                        },
                 ], 
-
             ],
         ],
     ]); 
 ?>  
  <?php Pjax::end(); ?>
+
+ <?php
+   /* Modal::begin([
+        'id' => 'modal',
+        'size' => 'modal-md',
+        'header' => '<h3>Asignar trabajadores</h3>',
+        ]);
+
+    echo "<div></div>";
+
+    Modal::end();*/
+?>
 </div>

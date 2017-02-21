@@ -113,6 +113,13 @@ $show_this_nav = PermissionHelpers::requireMinimumRole('Auxiliar');
                                 'class'=>'btn btn-danger btn-xs',
                                 ]);
                         },
+
+                /*'update' => function ($url, $model){
+                            return Html::a(Icon::show('pencil'), $url, [
+                                'title' => Yii::t('app', 'asignar trabajador'),
+                                'class'=>'btn btn-danger btn-xs',
+                                ]);
+                        },*/
                 ], 
             ],
         ],

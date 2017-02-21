@@ -15,10 +15,9 @@ $this->params['breadcrumbs'][] = 'Asignar tareas';
 
      <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= $this->renderAjax('_form', [
 		'model' => $model,
-        'searchModel' => $searchModel,
-        'dataProvider' => $dataProvider,
+        
     ]) ?>
 
 </div>

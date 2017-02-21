@@ -12,7 +12,7 @@ use kartik\icons\Icon;
 <div class="servicio-form">
 
     <?php $form = ActiveForm::begin([
-        'id' => 'espacio-form',
+        'id' => 'servicio-form',
         'enableAjaxValidation' => true,
         'enableClientScript' => true,
         'enableClientValidation' => true,

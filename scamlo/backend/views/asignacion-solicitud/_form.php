@@ -24,20 +24,13 @@ use yii\bootstrap\Modal;
         <hr/>
             <h4>Asigne los trabajadores a cada solicitud con la opcion "asignar trabajador" de la columna trabajadores.</h4>
         <hr/>
-
-        <?php Pjax::begin(); ?> 
-
-        <?= $this->renderAjax('_solicitudes', ['model' => $searchModel]); ?>
-
-        <?php Pjax::end(); ?>
-
-        <p id="mensaje-solicitudes"></p>
-       
+        <p id="mensaje-solicitudes"></p>       
    </div>
-</div>    
+  
     
     <?php $form = ActiveForm::begin(); ?>
-   
+
+    <?= $this->renderAjax('_solicitudes'); ?>
 
     <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
@@ -75,19 +68,6 @@ use yii\bootstrap\Modal;
         <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar Asignación' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'guardar-reserva']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
-    <?php
-
-        Modal::begin([
-            'id' => 'modal',
-            'size' => 'modal-lg',
-            'header' => '<h3>Asignacion de trabajadores a Solicitud</h3>',
-            ]);
-
-        echo "<div></div>";
-
-        Modal::end();
-    ?>
+    <?php ActiveForm::end(); ?>    
 
 </div>

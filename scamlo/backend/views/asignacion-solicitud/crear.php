@@ -9,17 +9,17 @@ use yii\helpers\Html;
 
 $this->title = 'Tabla de Trabajadores';
 $this->params['breadcrumbs'][] = ['label' => 'Ver tareas', 'url' => ['index']];
+/*$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];*/
 $this->params['breadcrumbs'][] = 'Asignar tareas';
-$this->params['breadcrumbs'][] = 'Asignar trabajador';
+//$this->params['breadcrumbs'][] = 'Asignar trabajador';
 ?>
-<div class="asignacion-solicitud-create">
+<div class="asignacion-trabajador-create">
 
      <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_crearAsignacion', [
+    <?= $this->renderAjax('_crearAsignacionForm', [
 		'model' => $model,
-        'searchModel' => $searchModel,
-        'dataProvider' => $dataProvider,
+        
     ]) ?>
 
 </div>

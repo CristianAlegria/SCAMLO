@@ -19,27 +19,23 @@ use yii\bootstrap\Modal;
 
 ?>
 
-   <div class="asignacion-solicitud-trabajadores-form">
-    <div class="form-group" id="primero">
-
-<!--<hr/> Se encarga de hacer las lineas punteadas  --------------------   -->
-
-    <h4>Tabla de trabajadores</h4>
-
-<hr/>
-
-    <?php Pjax::begin(); ?> 
-
-    <?= $this->render('view-trabajadores', ['model' => $searchModel]); ?>
-
-    <?php Pjax::end(); ?>
-
-    <p id="mensaje-solicitudes"></p>
+   <div class="asignacion-solicitud_crearAsignacionForm">
    
-</div>
-   
-    <?php $form = ActiveForm::begin(); ?>
-   
+
+<!--<hr/> Se encarga de hacer las lineas punteadas  --------------------   -->   
+
+    <hr/>
+
+    <?php $form = ActiveForm::begin([
+        'id' => 'asignacion-solicitud_crearAsignacionForm-form',
+        'enableAjaxValidation' => true,
+        'enableClientScript' => true,
+        'enableClientValidation' => true,
+        ]); ?>
+
+
+    <?= $this->renderAjax('view-trabajadores'); ?>   
+  
 
     <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
@@ -75,21 +71,8 @@ use yii\bootstrap\Modal;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar Asignación' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'guardar-reserva']) ?>
-    </div>
+    </div>    
 
     <?php ActiveForm::end(); ?>
-
-    <?php
-
-        Modal::begin([
-            'id' => 'modal',
-            'size' => 'modal-lg',
-            'header' => '<h3>Asignacion de trabajadores a Solicitud</h3>',
-            ]);
-
-        echo "<div></div>";
-
-        Modal::end();
-    ?>
 
 </div>

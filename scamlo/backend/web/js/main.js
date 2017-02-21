@@ -223,22 +223,6 @@ $(document).on('click', '#actualizar-clave', (function(){
 }));
 
 
-$("form#asignacion-solicitud-form-trabajadores").on("beforeSubmit", function(e) {
-    var form = $(this);
-    $.post(
-        form.attr("action")+"&submit=true",
-        form.serialize()
-        )
-    .done(function(result) {
-        form.parent().html(result.message);
-        //$.pjax.reload({container:"#tipo-espacio-grid"});
-    });
-    return false;
-}).on("submit", function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    return false;
-});
 
 
 
