@@ -16,7 +16,7 @@ $searchModel = new UserSearch();
 $dataProvider = $searchModel->searchParaAsignacionTrabajadores_tablaTrabajadores(Yii::$app->request->queryParams);
 
 ?>
-<div class="solicitud-view-trabajores-search">
+<div class="solicitud-view-trabajores">
     
 <?= GridView::widget([
         'id' => 'solicitud_trabajador-grid',
@@ -27,7 +27,18 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores_tablaTrabajadores
             [
             'attribute' => 'email',
             'value' => 'email',
-            ],           
+            ], 
+            [
+            'class' => 'yii\grid\CheckboxColumn',
+            // you may configure additional properties here
+                //'visible' => false,
+                'header' => 'Selección',
+                'multiple'=> true,
+                'checkboxOptions' => function ($model, $key, $index, $column) {
+                return ['value' => $model->id,
+                'title' => Yii::t('app', 'Selecciona trabajador'),];
+                }
+            ],          
 
         ],
     ]); 

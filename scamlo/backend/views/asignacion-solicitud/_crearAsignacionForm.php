@@ -55,12 +55,14 @@ use yii\bootstrap\Modal;
 
     <?= $form->field($model, 'observaciones')->hiddenInput(['value'=>''])->label(false);?>      
 
-    
+     <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-OJO ESTE CODIGO FUNCIONA PARA ASIGNAR SOLO UN TRABAJADOR */ ?> -->
+   
+    <!-- <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>-->
 
-    <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>
     <!--<?//= $form->field($model, 'usuario_id')->textInput() ?> -->
 
-    <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>
+   <!--  <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>-->
+     <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- */-->
 
     <!--<?//= $form->field($model, 'solicitud_id')->textInput() ?> -->
     <!--<?//= $form->field($model, 'solicitud_id')->textInput(['readonly' => true]) ?>-->

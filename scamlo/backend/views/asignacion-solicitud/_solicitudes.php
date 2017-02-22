@@ -21,7 +21,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
 
 <div class="solicitudes-search">
 <?php Pjax::begin(); 
-      ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
+     // ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
 ?> 
     
 <?= GridView::widget([
@@ -42,11 +42,12 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
             'attribute' => 'description',
             'value' => 'description',
             ],
+            
            ['class' => 'yii\grid\ActionColumn',
                 'template' => '{crear}', /*&nbsp{view}',*/
                 'header' => 'Trabajadores',
                 'buttons' => [                          
-                           /* 'crear' => function ($url, $model, $key) {
+                            'crear' => function ($url, $model, $key) {
                             return Html::a(Icon::show('male'), '#', [
                                 'id' => 'activity-index-link',
                                 'title' => Yii::t('app', 'asignar trabajador'),
@@ -56,14 +57,14 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
                                 'data-url' => Url::to(['crear', 'id' => $model->id]),
                                 'data-pjax' => '0',
                                 ]);
-                },*/
+                },
 
-                        'crear' => function ($url, $model){
+                        /*'crear' => function ($url, $model){
                             return Html::a(Icon::show('male'), $url, [
                                 'title' => Yii::t('app', 'asignar trabajador'),
                                 'class'=>'btn btn-danger btn-xs',
                                 ]);
-                        },
+                        },*/
                 ], 
             ],
         ],
@@ -72,7 +73,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
  <?php Pjax::end(); ?>
 
  <?php
-   /* Modal::begin([
+   Modal::begin([
         'id' => 'modal',
         'size' => 'modal-md',
         'header' => '<h3>Asignar trabajadores</h3>',
@@ -80,6 +81,6 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
 
     echo "<div></div>";
 
-    Modal::end();*/
+    Modal::end();
 ?>
 </div>

@@ -24,13 +24,13 @@ use yii\bootstrap\Modal;
         <hr/>
             <h4>Asigne los trabajadores a cada solicitud con la opcion "asignar trabajador" de la columna trabajadores.</h4>
         <hr/>
-        <p id="mensaje-solicitudes"></p>       
+       
    </div>
   
     
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $this->renderAjax('_solicitudes'); ?>
+    <?= $this->render('_solicitudes'); ?>
 
     <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
@@ -51,11 +51,11 @@ use yii\bootstrap\Modal;
     <?= $form->field($model, 'observaciones')->hiddenInput(['value'=>''])->label(false);?>      
 
     
-
-    <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>
+    <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-OJO ESTE CODIGO FUNCIONA PARA ASIGNAR SOLO UN TRABAJADOR */ ?> -->
+    <!-- <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?> -->
     <!--<?//= $form->field($model, 'usuario_id')->textInput() ?> -->
 
-    <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>
+   <!--  <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?> -->
 
     <!--<?//= $form->field($model, 'solicitud_id')->textInput() ?> -->
     <!--<?//= $form->field($model, 'solicitud_id')->textInput(['readonly' => true]) ?>-->

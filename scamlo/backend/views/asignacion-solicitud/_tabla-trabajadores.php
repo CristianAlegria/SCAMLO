@@ -64,17 +64,5 @@ use yii\bootstrap\Modal;
 
     <?php ActiveForm::end(); ?>
 
-    <?php
-
-        Modal::begin([
-            'id' => 'modal',
-            'size' => 'modal-lg',
-            'header' => '<h3>Asignacion de trabajadores a Solicitud</h3>',
-            ]);
-
-        echo "<div></div>";
-
-        Modal::end();
-    ?>
-
+    
 </div>
