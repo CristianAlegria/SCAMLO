@@ -90,8 +90,9 @@ class AsignacionSolicitudController extends Controller
         $model = new AsignacionSolicitud();
         $searchModel = new SolicitudSearch();
         $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
-
+       
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva tarea con exito.');
             return $this->redirect(['index', 'id' => $model->asignacion_id]);
         } else {
             return $this->render('create', [
@@ -101,6 +102,35 @@ class AsignacionSolicitudController extends Controller
             ]);
         }
     }
+
+    public function actionCrear($submit = false)
+    {
+        $model = new AsignacionSolicitud();
+        $searchModel = new SolicitudSearch();
+        $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
+
+       /* if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }*/
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+             Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva asignación.');
+            return $this->redirect(['index','id' => $model->asignacion_id]);
+        } else {
+            return $this->renderAjax('crear', [
+                'model' => $model,
+            ]);
+        }
+
+       /* if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index', 'id' => $model->asignacion_id]);
+        } else {
+            return $this->renderAjax('crear', [
+                'model' => $model,                
+            ]);
+        }*/
+    } 
     public function actionDisponibilidad()
     {
         $model = new AsignacionSolicitud();
@@ -130,10 +160,11 @@ class AsignacionSolicitudController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', Icon::show('check').'Asignacion actualizada.');
             return $this->redirect(['view', 'id' => $model->asignacion_id]);
         } else {
                 if (Yii::$app->user->identity->role_id==40) {
-                    return $this->render('update', [
+                    return $this->renderAjax('update', [
                         'model' => $model,
                     ]);
                 }else{
@@ -144,20 +175,7 @@ class AsignacionSolicitudController extends Controller
         }
         
     } 
-    public function actionCrear($submit = false)
-    {
-        $model = new AsignacionSolicitud();
-        $searchModel = new SolicitudSearch();
-        $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'id' => $model->asignacion_id]);
-        } else {
-            return $this->renderAjax('crear', [
-                'model' => $model,                
-            ]);
-        }
-    }    
+       
 
     /**
      * Deletes an existing AsignacionSolicitud model.

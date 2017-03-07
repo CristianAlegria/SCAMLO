@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->renderAjax('_modificarAsignacion', [
+    <?= $this->renderAjax('_crearAsignacionForm', [
         'model' => $model,
     ]) ?>
 

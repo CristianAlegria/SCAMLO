@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = 'Asignar trabajadores';
 
      <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_crearAsignacionForm', [
+    <?= $this->renderAjax('_crearAsignacionForm', [
 		'model' => $model,
         
     ]) ?>

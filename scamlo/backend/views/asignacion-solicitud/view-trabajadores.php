@@ -31,9 +31,9 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores_tablaTrabajadores
             [
             'class' => 'yii\grid\CheckboxColumn',
             // you may configure additional properties here
-                //'visible' => false,
+               // 'visible' => true,
                 'header' => 'Selección',
-                'multiple'=> true,
+                //'multiple'=> false,
                 'checkboxOptions' => function ($model, $key, $index, $column) {
                 return ['value' => $model->id,
                 'title' => Yii::t('app', 'Selecciona trabajador'),];

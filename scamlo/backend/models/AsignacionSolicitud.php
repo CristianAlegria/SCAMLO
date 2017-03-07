@@ -45,7 +45,7 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'usuario_id', 'fecha_hora_inicio','usuario_id','solicitud_id'], 'required'],
+            [[ 'usuario_id', 'fecha_hora_inicio'], 'required'],
             [['solicitud_id', 'estado_id', 'usuario_id', 'numero_inventario'], 'integer'],
             [['fecha_hora_inicio', 'fecha_hora_fin'], 'safe'],
             [['equipo_reparado'], 'string', 'max' => 80],
@@ -146,4 +146,8 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     {
         return $this->solicitud ? $this->solicitud->description : '- sin nombre -';
     }*/
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
 }

@@ -34,12 +34,13 @@ use yii\bootstrap\Modal;
         ]); ?>
 
 
-    <?= $this->renderAjax('view-trabajadores'); ?>   
+    <!--<?= $this->render('view-trabajadores'); ?>-->
   
 
     <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
     <?php $time = time();?>
+    <?php $solicitud_id = Yii::$app->request->get('id');?>
 
     <?php date_default_timezone_set('America/Bogota');  ?>    
      
@@ -57,11 +58,12 @@ use yii\bootstrap\Modal;
 
      <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-OJO ESTE CODIGO FUNCIONA PARA ASIGNAR SOLO UN TRABAJADOR */ ?> -->
    
-    <!-- <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>-->
+    <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>
+    <?= $form->field($model, 'solicitud_id')->hiddenInput (['value'=>$solicitud_id])->label(false);?>   
 
     <!--<?//= $form->field($model, 'usuario_id')->textInput() ?> -->
 
-   <!--  <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>-->
+    <!--<?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>-->
      <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- */-->
 
     <!--<?//= $form->field($model, 'solicitud_id')->textInput() ?> -->
@@ -71,10 +73,13 @@ use yii\bootstrap\Modal;
         <?//= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>-->
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar Asignación' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'guardar-reserva']) ?>
+    <!--<div class="form-group">
+        <p>
+            <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => $model->isNewRecord ? 'guardar' : 'actualizar']) ?>
+            <?= Html::button(Icon::show('times-circle-o ').'Salir', ['class' => 'btn btn-default', 'id' => 'salir',]) ?>
+        </p>
     </div>    
 
-    <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>-->
 
 </div>

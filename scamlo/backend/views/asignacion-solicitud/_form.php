@@ -23,10 +23,8 @@ use yii\bootstrap\Modal;
 
         <hr/>
             <h4>Asigne los trabajadores a cada solicitud con la opcion "asignar trabajador" de la columna trabajadores.</h4>
-        <hr/>
-       
-   </div>
-  
+        <hr/>       
+   </div>  
     
     <?php $form = ActiveForm::begin(); ?>
 
@@ -48,25 +46,18 @@ use yii\bootstrap\Modal;
 
     <?= $form->field($model, 'numero_inventario')->hiddenInput(['value'=>''])->label(false);?> 
 
-    <?= $form->field($model, 'observaciones')->hiddenInput(['value'=>''])->label(false);?>      
-
+    <?= $form->field($model, 'observaciones')->hiddenInput(['value'=>''])->label(false);?> 
     
-    <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-OJO ESTE CODIGO FUNCIONA PARA ASIGNAR SOLO UN TRABAJADOR */ ?> -->
-    <!-- <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?> -->
+
+    <!-- <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>-->
+
     <!--<?//= $form->field($model, 'usuario_id')->textInput() ?> -->
 
-   <!--  <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?> -->
+    <!--  <?= $form->field($model, 'solicitud_id')->dropDownList($model->solicitudList,[ 'prompt' => 'Elige Solicitud']);?>    -->   
 
-    <!--<?//= $form->field($model, 'solicitud_id')->textInput() ?> -->
-    <!--<?//= $form->field($model, 'solicitud_id')->textInput(['readonly' => true]) ?>-->
-
-   <!-- <div class="form-group">
-        <?//= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>-->
-
-    <div class="form-group">
+    <!--  <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar Asignación' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'guardar-reserva']) ?>
-    </div>
+    </div>  -->
 
     <?php ActiveForm::end(); ?>    
 

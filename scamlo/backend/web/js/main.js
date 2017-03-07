@@ -1,5 +1,3 @@
-
-
 $(document).on('click', '#activity-index-link', (function() {
         $.get(
         $(this).data('url'),
@@ -72,6 +70,8 @@ $("form#servicio-form").on("beforeSubmit", function(e) {
     e.stopImmediatePropagation();
     return false;
 });
+
+
 
 // obtener la id del formulario y establecer el manejador de eventos Usuarios
 $("form#solicitud-form").on("beforeSubmit", function(e) {
