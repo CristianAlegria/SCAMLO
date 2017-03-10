@@ -81,11 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'update' => function ($url, $model, $key) {
                     return Html::a(Icon::show('pencil'), '#', [
                         'id' => 'activity-index-link',
-                        'title' => Yii::t('app', 'Actualizar tipo de espacio'),
+                        'title' => Yii::t('app', 'Actualizar asignación'),
                         'class'=>'btn btn-danger btn-xs',
                         'data-toggle' => 'modal',
                         'data-target' => '#modal',
-                        'data-url' => Url::to(['update', 'id' => $model->id]),
+                        'data-url' => Url::to(['update', 'id' => $model->id,'solicitud_id' => $model->solicitud_id]),
                         'data-pjax' => '0',
                         ]);
                 },
@@ -105,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
         Modal::begin([
             'id' => 'modal',
             'size' => 'modal-md',
-            'header' => '<h3>Gestión de servicios</h3>',
+            'header' => '<h3>Actualizar asignacion</h3>',
             ]);
 
         echo "<div></div>";

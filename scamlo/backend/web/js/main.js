@@ -54,6 +54,24 @@ $("form#user-form").on("beforeSubmit", function(e) {
 });
 
 // obtener la id del formulario y establecer el manejador de eventos Usuarios
+$("form#asignacion-solicitud_crearAsignacionForm-form").on("beforeSubmit", function(e) {
+    var form = $(this);
+    $.post(
+    form.attr("action")+"&submit=true",
+    form.serialize()
+    )
+    .done(function(result) {
+        form.parent().html(result.message);
+        $.pjax.reload({container:"#asignacion-solicitud-grid"});
+    });
+    return false;
+}).on("submit", function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
+
+// obtener la id del formulario y establecer el manejador de eventos Usuarios
 $("form#servicio-form").on("beforeSubmit", function(e) {
     var form = $(this);
     $.post(

@@ -10,6 +10,7 @@ use yii\helpers\ArrayHelper;
 
 
 
+
 /**
  * This is the model class for table "asignacion_solicitud".
  *
@@ -76,9 +77,6 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
             'nombreSolicitud' =>'Solicitud',
             //'descriptionSolicitud' =>'Solicitud',
             'nombreEstado' =>'Estado',
-            
-
-
         ];
     }
 

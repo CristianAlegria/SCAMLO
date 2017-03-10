@@ -154,10 +154,12 @@ class AsignacionSolicitudController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id,$submit = false)
     {                 
         
         $model = $this->findModel($id);
+
+      
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Icon::show('check').'Asignacion actualizada.');
@@ -172,8 +174,7 @@ class AsignacionSolicitudController extends Controller
                         'model' => $model,
                     ]);
                 }
-        }
-        
+        }        
     } 
        
 

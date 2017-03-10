@@ -20,8 +20,12 @@ use yii\bootstrap\Modal;
        
     <hr/>
 
-    <?php $form = ActiveForm::begin([]); ?>
-
+     <?php $form = ActiveForm::begin([
+        'id' => 'asignacion-solicitud_crearAsignacionForm-form',
+        'enableAjaxValidation' => true,
+        'enableClientScript' => true,
+        'enableClientValidation' => true,
+        ]); ?>
 
     <!--<?= $this->render('view-trabajadores'); ?>-->
   
@@ -29,7 +33,7 @@ use yii\bootstrap\Modal;
     <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
     <?php $time = time();?>
-    <?php $solicitud_id = Yii::$app->request->get('id');?>
+    <?php $solicitud_id = Yii::$app->request->get('solicitud_id');?>
 
     <?php date_default_timezone_set('America/Bogota');  ?>    
      
