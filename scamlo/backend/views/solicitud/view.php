@@ -42,7 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'nombreServicio',
             'description',
             'nombreEdificio',
-            'numero_piso',         
+            //'numero_piso', NOTA: SE QUITO PORQUE EL NUMERO DEL PISO ME LO DA EL PRIMER 
+            //               DIGITO  DEL CODIGO DE ESPACIO      
             'nombreEspacio',
             'codigoEspacio',
             'descripcion_otros',          

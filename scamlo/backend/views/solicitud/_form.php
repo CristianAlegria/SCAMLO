@@ -27,9 +27,15 @@ use kartik\icons\Icon;
 
     <?= $form->field($model, 'espacio_id')->dropDownList($model->EspacioList,[ 'prompt' => 'Elige el espacio' ]);?>
 
-    <?= $form->field($model, 'descripcion_otros')->textArea(['rows' => 3,'placeholder' => "descripción de otro espacio es opcional"])?> 
+    <?= $form->field($model, 'descripcion_otros')->textArea(['rows' => 3,'placeholder' => "descripción de otro espacio es opcional"])?>
+    
 
-    <?= $form->field($model, 'numero_piso')->hiddenInput (['value'=>0])->label(false);?>
+    <!-- ***********************************************************************************
+    'numero_piso', NOTA: SE QUITO PORQUE EL NUMERO DEL PISO ME LO DA EL PRIMER 
+            //               DIGITO  DEL CODIGO DE ESPACIO  -->
+    <!--<?= $form->field($model, 'numero_piso')->hiddenInput (['value'=>0])->label(false);?>
+
+    ****************************************************************************************-->
 
     <?php $fecha = date('Y-m-d');?>
     <?= $form->field($model, 'fecha')->hiddenInput (['value'=>$fecha])->label(false); //textInput('hidden'=>true) ?>  

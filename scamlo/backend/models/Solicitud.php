@@ -47,7 +47,7 @@ class Solicitud extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'numero_piso', 'fecha','espacio_id','dependencia_id','servicio_id'], 'required'],
+            [['description','fecha','espacio_id','dependencia_id','servicio_id'], 'required'],
             [['numero_piso', 'user_id', 'estado_id'], 'integer'],
             [['description', 'descripcion_otros', 'descripcion_estado'], 'string', 'max' => 255],
             [['fecha'], 'string', 'max' => 48],
@@ -72,7 +72,7 @@ class Solicitud extends \yii\db\ActiveRecord
             'description' => Yii::t('app','Descripcion'),
             'descripcion_otros' => Yii::t('app','Descripcion de otro Espacio'),
             'espacio_id' => Yii::t('app','Espacio'),
-            'numero_piso' => Yii::t('app','Numero Piso'),
+            'codigoEspacio' => Yii::t('app','Numero Piso'),
             'fecha' => Yii::t('app','Fecha solicitud'),
             'user_id' => Yii::t('app', 'Solicitante'),
             'nombreUser' => Yii::t('app', 'Solicitante'),

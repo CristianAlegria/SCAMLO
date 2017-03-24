@@ -49,29 +49,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'id',
+            'id',
             //'dependencia_id',
-            [
+            /*[
             'attribute' => 'dependencia_id',
             'value' => 'dependencia.nombre_dependencia',
             'filter' => Html::activeDropDownList($searchModel, 'dependencia_id', ArrayHelper::map(Dependencia::find()->asArray()->all(), 'nombre_dependencia', 'nombre_dependencia'), ['class' => 'form-control', 'prompt' => '']),
-            ],
+            ],*/
             //'servicio_id',
-             'nombreUser', 
+            /* 'nombreUser', */
 
-            [
+           /*[
             'attribute' => 'servicio_id',
             'value' => 'servicio.nombre_servicio',
             'filter' => Html::activeDropDownList($searchModel, 'servicio_id', ArrayHelper::map(Servicio::find()->asArray()->all(), 'nombre_servicio', 'nombre_servicio'), ['class' => 'form-control', 'prompt' => '']),
-            ],
+            ],*/
             'description',
             //'espacio_id',
-            [
+           /* [
             'attribute' => 'espacio_id',
             'value' => 'espacio.nombre',
             'filter' => Html::activeDropDownList($searchModel, 'espacio_id', ArrayHelper::map(Espacio::find()->asArray()->all(), 'nombre', 'nombre'), ['class' => 'form-control', 'prompt' => '']),
-            ],
-             'numero_piso',
+            ],*/
+             //'numero_piso',
              'fecha',
             // 'user_id',
              //'estado_id',
