@@ -29,12 +29,10 @@ use kartik\icons\Icon;
 
     <?= $form->field($model, 'descripcion_otros')->textArea(['rows' => 3,'placeholder' => "descripción de otro espacio es opcional"])?> 
 
-    <?= $form->field($model, 'numero_piso')->textInput() ?>
+    <?= $form->field($model, 'numero_piso')->hiddenInput (['value'=>0])->label(false);?>
 
     <?php $fecha = date('Y-m-d');?>
-    <?= $form->field($model, 'fecha')->hiddenInput (['value'=>$fecha])->label(false); //textInput('hidden'=>true) ?> 
-    
-   
+    <?= $form->field($model, 'fecha')->hiddenInput (['value'=>$fecha])->label(false); //textInput('hidden'=>true) ?>  
   
     <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 2])->label(false); //textInput('hidden'=>true) ?>
     

@@ -129,10 +129,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'size' => 'modal-md',
             'header' => '<h3>Gestión de solicitud</h3>',
             ]);
-
         echo "<div></div>";
-
         Modal::end();
     ?>
-
 </div>

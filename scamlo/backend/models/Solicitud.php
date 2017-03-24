@@ -150,16 +150,20 @@ class Solicitud extends \yii\db\ActiveRecord
     * get list of Espacio for dropdown
     */
     public static function getEspacioList()
-    {
-        $droptions = Espacio::find()->asArray()->all();
-        return Arrayhelper::map($droptions, 'espacio_id', 'codigo','nombre');
+    {       
+           $query = (new yii\db\Query);
+           $droptions =  $query->select(['espacio.codigo', 'espacio.espacio_id', 'espacio.nombre','edificio.nombre_edificio','edificio.edificio_id']) ->from('espacio')
+                            ->leftJoin('edificio', 'edificio.edificio_id = espacio.edificio_id');
+           $command = $query->createCommand();
+           // Ejecutar el comando:
+           $rows = $command->queryAll();
+         return Arrayhelper::map($rows, 'espacio_id', 'codigo','nombre_edificio');        
     }
 
     /**
     * get edificio name
     *
     */
-
     public function getNombreDependencia()
     {
         return $this->dependencia ? $this->dependencia->nombre_dependencia : '- sin dependencia -';
