@@ -18,16 +18,20 @@ use yii\bootstrap\Modal;
 ?>
 <div class="asignacion-solicitud-form-modificar">
        
-    <?php $form = ActiveForm::begin(); ?>
+     <?php $form = ActiveForm::begin([
+        'id' => 'asignacion-solicitud-form-modificar',
+        'enableAjaxValidation' => true,
+        'enableClientScript' => true,
+        'enableClientValidation' => true,
+        ]); ?>
    
-
-    <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
 
     <?php $time = time();?>
 
     <?php date_default_timezone_set('America/Bogota');  ?>    
      
     <?php $fecha = date('Y-m-d (H:i:s)', $time);?>
+
 
     <?= $form->field($model, 'estado_id')->dropDownList($model->estadoList,[ 'prompt' => 'Elige el nuevo Estado de su tarea']);?>
 
@@ -42,10 +46,12 @@ use yii\bootstrap\Modal;
     
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar Asignación' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'guardar-reserva']) ?>
+        <p>
+            <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            <?= Html::button(Icon::show('times-circle-o ').'Salir', ['class' => 'btn btn-default', 'id' => 'salir',]) ?>
+        </p>
     </div>
 
     <?php ActiveForm::end(); ?>
-    
 
 </div>

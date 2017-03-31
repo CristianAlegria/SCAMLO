@@ -16,12 +16,11 @@ use yii\bootstrap\Modal;
 /* @var $model backend\models\AsignacionSolicitud */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<div class="asignacion-solicitud-form-modificar">
-       
-    <hr/>
+<div class="asignacion-solicitud-form-modificar">      
+   
 
      <?php $form = ActiveForm::begin([
-        'id' => 'asignacion-solicitud_crearAsignacionForm-form',
+        'id' => 'asignacion-solicitud-form-modificar',
         'enableAjaxValidation' => true,
         'enableClientScript' => true,
         'enableClientValidation' => true,
@@ -66,12 +65,12 @@ use yii\bootstrap\Modal;
         <?//= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>-->
 
-    <div class="form-group">
+   <div class="form-group">
         <p>
-            <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => $model->isNewRecord ? 'guardar' : 'actualizar']) ?>
+            <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
             <?= Html::button(Icon::show('times-circle-o ').'Salir', ['class' => 'btn btn-default', 'id' => 'salir',]) ?>
         </p>
-    </div>    
+    </div> 
 
     <?php ActiveForm::end(); ?>
 

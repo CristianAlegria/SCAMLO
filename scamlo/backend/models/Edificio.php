@@ -29,8 +29,8 @@ class Edificio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre_edificio','ubicacion'], 'required'],
-            [['nombre_edificio', 'ubicacion'], 'string', 'max' => 40, 'min' => 4],
+            [['nombre_edificio'], 'required'],
+            [['nombre_edificio'], 'string', 'max' => 40, 'min' => 4],
         ];
     }
 

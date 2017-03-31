@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use backend\models\Estado;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
 
 
 
@@ -65,19 +66,23 @@ $this->params['breadcrumbs'][] = "Ver mis tareas";
             ],  
 
            ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view} &nbsp{update}',
+                'template' => '{view} {update}',
                 'header' => 'Opciones',
                 'buttons' => [
                         'update' => function ($url, $model, $key) {
-                            return Html::a(Icon::show('pencil'),$url, [
+                            return Html::a(Icon::show('pencil'), '#', [
                                 'id' => 'activity-index-link',
-                                'title' => Yii::t('app', 'Actualizar asignación'),
-                                'class'=>'btn btn-danger btn-xs',                                
+                                'title' => Yii::t('app', 'Actualizar tarea'),
+                                'class'=>'btn btn-danger btn-xs',
+                                'data-toggle' => 'modal',
+                                'data-target' => '#modal',
+                                'data-url' => Url::to(['update', 'id' => $model->id]),
+                                'data-pjax' => '0',
                                 ]);
-                        },
+                },
                         'view' => function ($url, $model){
                             return Html::a(Icon::show('eye'), $url, [
-                                'title' => Yii::t('app', 'Ver asignación'),
+                                'title' => Yii::t('app', 'Ver tarea'),
                                 'class'=>'btn btn-danger btn-xs',
                                 ]);
                         },
@@ -87,4 +92,15 @@ $this->params['breadcrumbs'][] = "Ver mis tareas";
         ],
     ]); ?>
     <?php Pjax::end(); ?>
+     <?php
+        Modal::begin([
+            'id' => 'modal',
+            'size' => 'modal-md',
+            'header' => '<h3>Actualizar tarea</h3>',
+            ]);
+
+        echo "<div></div>";
+
+        Modal::end();
+    ?>
 </div>

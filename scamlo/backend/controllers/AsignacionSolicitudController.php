@@ -109,27 +109,25 @@ class AsignacionSolicitudController extends Controller
         $searchModel = new SolicitudSearch();
         $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
 
-       /* if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+       
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
-        }*/
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-             Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva asignación.');
-            return $this->redirect(['index','id' => $model->asignacion_id]);
-        } else {
-            return $this->renderAjax('crear', [
-                'model' => $model,
-            ]);
         }
 
-       /* if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'id' => $model->asignacion_id]);
-        } else {
-            return $this->renderAjax('crear', [
-                'model' => $model,                
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado un nuevo espacio.');
+                return $this->redirect(['view', 'id' => $model->asignacion_id]);
+            } else {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
+        }
+
+        return $this->renderAjax('crear', [
+            'model' => $model,
             ]);
-        }*/
     } 
     public function actionDisponibilidad()
     {
@@ -157,12 +155,15 @@ class AsignacionSolicitudController extends Controller
     public function actionUpdate($id,$submit = false)
     {                 
         
-        $model = $this->findModel($id);
-
-      
+        $model = $this->findModel($id);  
+            
+         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', Icon::show('check').'Asignacion actualizada.');
+            Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.');
             return $this->redirect(['view', 'id' => $model->asignacion_id]);
         } else {
                 if (Yii::$app->user->identity->role_id==40) {
@@ -170,12 +171,13 @@ class AsignacionSolicitudController extends Controller
                         'model' => $model,
                     ]);
                 }else{
-                     return $this->render('update2', [
+                     return $this->renderAjax('update2', [
                         'model' => $model,
                     ]);
                 }
+
         }        
-    } 
+    }    
        
 
     /**
@@ -185,8 +187,15 @@ class AsignacionSolicitudController extends Controller
      * @return mixed
      */
     public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    {        
+
+        $model= $this->findModel($id);
+        try {
+             $model->delete();
+             Yii::$app->session->setFlash('success', Icon::show('check').'Tarea eliminada.');
+        } catch(IntegrityException $e) {
+            Yii::$app->session->setFlash('error', 'No es posible eliminar la asignacion de tarea.');
+        }
 
         return $this->redirect(['index']);
     }

@@ -56,7 +56,7 @@ use yii\bootstrap\Modal;
 
     <?= $form->field($model, 'observaciones')->hiddenInput(['value'=>''])->label(false);?>      
 
-     <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-OJO ESTE CODIGO FUNCIONA PARA ASIGNAR SOLO UN TRABAJADOR */ ?> -->
+     <!--  /* *-*-*-*-**-*-*-*-**-*-*-*-*-**-*-**-*-OJO. ESTE CODIGO FUNCIONA PARA ASIGNAR SOLO UN TRABAJADOR */ ?> -->
    
     <?= $form->field($model, 'usuario_id')->dropDownList($model->userList,[ 'prompt' => 'Elige Trabajador']);?>
     <?= $form->field($model, 'solicitud_id')->hiddenInput (['value'=>$solicitud_id])->label(false);?>   
@@ -73,13 +73,13 @@ use yii\bootstrap\Modal;
         <?//= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>-->
 
-    <!--<div class="form-group">
+    <div class="form-group">
         <p>
             <?= Html::submitButton($model->isNewRecord ? Icon::show('floppy-o').'Guardar' : Icon::show('pencil').'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => $model->isNewRecord ? 'guardar' : 'actualizar']) ?>
             <?= Html::button(Icon::show('times-circle-o ').'Salir', ['class' => 'btn btn-default', 'id' => 'salir',]) ?>
         </p>
     </div>    
 
-    <?php ActiveForm::end(); ?>-->
+    <?php ActiveForm::end(); ?>
 
 </div>

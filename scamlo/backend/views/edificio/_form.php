@@ -21,7 +21,7 @@ use kartik\icons\Icon;
 
     <?= $form->field($model, 'nombre_edificio')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ubicacion')->textInput(['maxlength' => true]) ?>
+    <!--<?= $form->field($model, 'ubicacion')->textInput(['maxlength' => true]) ?> -->
 
     <div class="form-group">
         <p>

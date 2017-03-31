@@ -153,6 +153,7 @@ class EdificioController extends Controller
             'model' => $model,
             ]);
     }
+    
 
     /**
      * Deletes an existing Equipo model.

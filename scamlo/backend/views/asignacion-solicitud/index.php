@@ -24,18 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
       
     <p>
-        <?= Html::a('Asignar tareas', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a( Icon::show('plus').'Asignar tareas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <p>
-    <?php
-        echo Html::a(Icon::show('file-pdf-o').'Click aqui. REPORTE EN PDF', ['/asignacion-solicitud/report'], [
-            'class'=>'btn btn-xs linksWithTarget', 
-            'target'=>'_blank', 
-        ]);
-    ?>
-</p>
-    <?php Pjax::begin();       
-    ?>  
+        <?php
+            echo Html::a(Icon::show('file-pdf-o').'Click aqui. REPORTE EN PDF', ['/asignacion-solicitud/report'], [
+                'class'=>'btn btn-xs linksWithTarget', 
+                'target'=>'_blank', 
+            ]);
+        ?>
+    </p>
+    <?php Pjax::begin();?>  
 
     <?= GridView::widget([
         'id' => 'asignacion-solicitud-grid',
@@ -75,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],  
 
            ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view} &nbsp{update}',
+                'template' => '{view} {update}',
                 'header' => 'Opciones',
                 'buttons' => [
                 'update' => function ($url, $model, $key) {

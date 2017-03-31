@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo Html::a( Icon::show('trash').'Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-            'confirm' => Yii::t('app', 'Seguro que quieres eliminar este equipo?'),
+            'confirm' => Yii::t('app', 'Seguro que quieres eliminar este edificio?'),
             'method' => 'post',
             ],
 
