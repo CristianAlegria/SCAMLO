@@ -21,7 +21,6 @@ use yii\web\Response;
 use kartik\mpdf\Pdf;
 use common\models\ValueHelpers;
 
-//cloud 9 :) :) :)
 /**
  * AsignacionSolicitudController implements the CRUD actions for AsignacionSolicitud model.
  */
@@ -111,10 +110,10 @@ class AsignacionSolicitudController extends Controller
         $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
 
        
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+        /*if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
-        }
+        }*/
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
@@ -158,13 +157,20 @@ class AsignacionSolicitudController extends Controller
         
         $model = $this->findModel($id);  
             
-         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+         /* (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
-        }
+        }*/
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.');
+            
+            $this->actualizarEstadoDeSolicitud($model->solicitud_id,$model->estado_id);
+          
+           // $solicitud_id=$model->solicitud_id;
+           // $estado_id=$model->estado_id;
+          	
+            Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.'.$model->solicitud_id." - ".$model->estado_id);
+           
             return $this->redirect(['view', 'id' => $model->asignacion_id]);
         } else {
                 if (Yii::$app->user->identity->role_id==40) {
@@ -176,10 +182,14 @@ class AsignacionSolicitudController extends Controller
                         'model' => $model,
                     ]);
                 }
-
-        }        
-    }    
-       
+        }
+    }
+        
+        public function actualizarEstadoDeSolicitud($solicitud_id,$estado_id)
+    	{
+    	  Yii::$app->db->createCommand("UPDATE solicitud set estado_id=$estado_id where id=$solicitud_id")->execute();
+    		
+        }
 
     /**
      * Deletes an existing AsignacionSolicitud model.

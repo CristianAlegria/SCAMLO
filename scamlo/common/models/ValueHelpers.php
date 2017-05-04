@@ -13,7 +13,7 @@ Class ValueHelpers
 	public static function getRoleValue($role_name)
 	{
 		$connection = \Yii::$app->db;
-		$sql = "SELECT role_value FROM role WHERE role_name=:role_name";
+			$sql = "SELECT role_value FROM role WHERE role_name=:role_name";
 		$command = $connection->createCommand($sql);
 		$command->bindValue(":role_name", $role_name);
 		$result = $command->queryOne();

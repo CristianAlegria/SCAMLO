@@ -92,7 +92,6 @@ $show_this_nav = PermissionHelpers::requireMinimumRole('Auxiliar');
             ]);
 
         echo "<div></div>";
-
         Modal::end();
     ?>
 

@@ -95,6 +95,11 @@ class ServicioController extends Controller
     {
         $model = $this->findModel($id);
         
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+        
        if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', Icon::show('check').'Servicio actualizado.');
