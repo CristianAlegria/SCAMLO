@@ -189,7 +189,7 @@ MomentjsAsset::register($this);
 
     <div class="container">
         <div class="footer-logo">               
-            <p align="center">Derechos reservados por: &copy AlegriaSoft</i></p>                     
+            <p align="center">Derechos reservados por: &copy AlegriaSoft Company</i></p>                     
         </div>
     </div> 
 </footer>

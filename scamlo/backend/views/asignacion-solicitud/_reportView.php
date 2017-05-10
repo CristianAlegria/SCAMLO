@@ -4,7 +4,7 @@ use yii\helpers\Html;
 ?>
 <br>
 <div id="reporte" style="font-size: 28pt;">
-<p><?=Html::img('@web/images/univalle.png')?><h6>UNIVERSIDAD DEL VALLE
+<p><?=Html::img('@backend/web/images/univalle.png')?><h6>UNIVERSIDAD DEL VALLE
                                                    <br>VICERRECTORÍA ADMINISTRATIVA
                                                    <br>SECCIÓN DE MANTENIMIENTO Y EJECUCIÓN DE OBRAS</h6></p>
 </div>

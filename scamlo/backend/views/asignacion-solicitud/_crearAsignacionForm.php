@@ -35,16 +35,17 @@ use yii\bootstrap\Modal;
 
 
     <!--<?= $this->render('view-trabajadores'); ?>-->
-  
-
-    <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> 3])->label(false); //textInput('hidden'=>true) ?>
+    
 
     <?php $time = time();?>
     <?php $solicitud_id = Yii::$app->request->get('id');?>
+    <?php $estado_id = Yii::$app->request->get('estado_id');?>
 
     <?php date_default_timezone_set('America/Bogota');  ?>    
      
     <?php $fecha = date('Y-m-d (H:i:s)', $time);?>
+    
+    <?= $form->field($model, 'estado_id')->hiddenInput (['value'=> $estado_id])->label(false); //textInput('hidden'=>true) ?>
 
     <?= $form->field($model, 'fecha_hora_inicio')->hiddenInput (['value'=>$fecha])->label(false);?>           
 

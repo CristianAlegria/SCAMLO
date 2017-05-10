@@ -132,7 +132,8 @@ class AsignacionSolicitudController extends Controller
                }
                 if ($guardo){
                     Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva tarea con exito.');
-                    return $this->redirect(['view', 'id' => $model->asignacion_id]);
+                    return $this->redirect(['create', 'id' => $model->asignacion_id]);
+                  
                 } else {
                     Yii::$app->response->format = Response::FORMAT_JSON;
                     return ActiveForm::validate($model);
@@ -186,11 +187,14 @@ class AsignacionSolicitudController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
             $this->actualizarEstadoDeSolicitud($model->solicitud_id,$model->estado_id);
+            $this->actualizarEstadoDeAsignacionSolicitud($model->solicitud_id,$model->estado_id);
+            
           
            // $solicitud_id=$model->solicitud_id;
            // $estado_id=$model->estado_id;
           	
-            Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.'.$model->solicitud_id." - ".$model->estado_id);
+            //Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.'.$model->solicitud_id." - ".$model->estado_id);
+            Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.');
            
             return $this->redirect(['view', 'id' => $model->asignacion_id]);
         } else {
@@ -206,11 +210,16 @@ class AsignacionSolicitudController extends Controller
         }
     }
         
-        public function actualizarEstadoDeSolicitud($solicitud_id,$estado_id)
-    	{
-    	  Yii::$app->db->createCommand("UPDATE solicitud set estado_id=$estado_id where id=$solicitud_id")->execute();
-    		
-        }
+    public function actualizarEstadoDeSolicitud($solicitud_id,$estado_id)
+	{
+	  Yii::$app->db->createCommand("UPDATE solicitud set estado_id=$estado_id where id=$solicitud_id")->execute();
+		
+    }
+     public function actualizarEstadoDeAsignacionSolicitud($solicitud_id,$estado_id)
+	{
+	  Yii::$app->db->createCommand("UPDATE asignacion_solicitud set estado_id=$estado_id where solicitud_id=$solicitud_id")->execute();
+		
+    }
 
     /**
      * Deletes an existing AsignacionSolicitud model.

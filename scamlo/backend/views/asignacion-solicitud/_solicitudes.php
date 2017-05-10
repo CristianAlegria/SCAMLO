@@ -54,7 +54,7 @@ $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->reques
                                 'class'=>'btn btn-danger btn-xs',
                                 'data-toggle' => 'modal',
                                 'data-target' => '#modal',
-                                'data-url' => Url::to(['crear', 'id' => $model->id]),
+                                'data-url' => Url::to(['crear', 'id' => $model->id,'estado_id' => $model->estado_id]),
                                 'data-pjax' => '0',
                                 ]);
                 },

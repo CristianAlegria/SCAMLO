@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo Html::a(Icon::show('file-pdf-o').'Generar  PDF', ['/asignacion-solicitud/report'], [
                 'class'=>'btn btn-danger linksWithTarget', 
                 'target'=>'_blank', 
+                
              ]);
         ?>
     </p>
