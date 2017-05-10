@@ -28,13 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <p>
         <?php
-            echo Html::a(Icon::show('file-pdf-o').'Click aqui. REPORTE EN PDF', ['/asignacion-solicitud/report'], [
+            /*echo Html::a(Icon::show('file-pdf-o').'Click aqui. REPORTE EN PDF', ['/asignacion-solicitud/report'], [
                 'class'=>'btn btn-xs linksWithTarget', 
                 'target'=>'_blank', 
-            ]);
+            ]);*/
+        ?>
+        <?php
+            echo Html::a(Icon::show('file-pdf-o').'Generar  PDF', ['/asignacion-solicitud/report'], [
+                'class'=>'btn btn-danger linksWithTarget', 
+                'target'=>'_blank', 
+             ]);
         ?>
     </p>
-    <?php Pjax::begin();?>  
+    <?php Pjax::begin(
+       ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
+       );
+    ?>  
 
     <?= GridView::widget([
         'id' => 'asignacion-solicitud-grid',

@@ -22,6 +22,7 @@ use yii\bootstrap\Modal;
      <?php $form = ActiveForm::begin([
         'id' => 'asignacion-solicitud-form-modificar',
         'enableAjaxValidation' => true,
+        'method' => 'post',
         'enableClientScript' => true,
         'enableClientValidation' => true,
         ]); ?>

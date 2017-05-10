@@ -107,28 +107,49 @@ class AsignacionSolicitudController extends Controller
     {
         $model = new AsignacionSolicitud();
         $searchModel = new SolicitudSearch();
+        $guardo=false;
         $dataProvider = $searchModel->searchParaAsignacionTrabajadores(Yii::$app->request->queryParams);
 
        
         /*if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
+            
             return ActiveForm::validate($model);
         }*/
+        
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado un nuevo espacio.');
-                return $this->redirect(['view', 'id' => $model->asignacion_id]);
-            } else {
-                Yii::$app->response->format = Response::FORMAT_JSON;
-                return ActiveForm::validate($model);
-            }
+            
+               if($this->verificarTrabajadorTarea($model->solicitud_id,$model->usuario_id)==0){
+                  $guardo= $model->save();
+               }else{
+                     //return  ['usuario_id', 'message' => 'Este trabajador ya se le asigno esta tarea'];
+                     // $this->renderAjax('crear', ['message' => 'Este trabajador ya se le asigno esta tarea']);
+                       Yii::$app->session->setFlash('error', Icon::show('ban').'No se puede asignar la misma tarea al mismo trabajador.');
+                       return $this->redirect(['create', 'id' =>-1]);
+                   //  return $this->addError(usuario_id, 'El token debe contener letras y dígitos.');
+                   
+               }
+                if ($guardo){
+                    Yii::$app->session->setFlash('success', Icon::show('check').'Se ha creado una nueva tarea con exito.');
+                    return $this->redirect(['view', 'id' => $model->asignacion_id]);
+                } else {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }  
         }
 
         return $this->renderAjax('crear', [
             'model' => $model,
             ]);
     } 
+    
+    public function verificarTrabajadorTarea($solicitud_id,$usuario_id)
+    {
+    	 $result = Yii::$app->db->createCommand("select * from asignacion_solicitud  where solicitud_id=$solicitud_id and usuario_id=$usuario_id")->execute();
+         return $result;
+    }
+        
     public function actionDisponibilidad()
     {
         $model = new AsignacionSolicitud();
@@ -157,7 +178,7 @@ class AsignacionSolicitudController extends Controller
         
         $model = $this->findModel($id);  
             
-         /* (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
+        /* if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }*/

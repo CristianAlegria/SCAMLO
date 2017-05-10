@@ -50,6 +50,7 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
             [['numero_inventario'], 'integer'],
             [['fecha_hora_inicio', 'fecha_hora_fin'], 'safe'],
             [['equipo_reparado'], 'string', 'max' => 80],
+           // ['usuario_id', 'integer','max' => 12345600,'message'=> 'El trabajador seleccionado ya se le asigno esta tarea'],
             [['observaciones'], 'string', 'max' => 255],
             [['estado_id'], 'exist', 'skipOnError' => true, 'targetClass' => Estado::className(), 'targetAttribute' => ['estado_id' => 'id']],
             [['solicitud_id'], 'exist', 'skipOnError' => true, 'targetClass' => Solicitud::className(), 'targetAttribute' => ['solicitud_id' => 'id']],

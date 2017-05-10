@@ -45,50 +45,6 @@ class AsignacionSolicitudSearch extends AsignacionSolicitud
 
 
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-   /* public function search($params)
-    {
-        $query = AsignacionSolicitud::find();
-
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 100,
-            ],
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'asignacion_id' => $this->asignacion_id,
-            'solicitud_id' => $this->solicitud_id,
-            'estado_id' => $this->estado_id,
-            'usuario_id' => $this->usuario_id,
-            'fecha_hora_inicio' => $this->fecha_hora_inicio,
-            'fecha_hora_fin' => $this->fecha_hora_fin,
-            'numero_inventario' => $this->numero_inventario,
-        ]);
-
-        $query->andFilterWhere(['like', 'equipo_reparado', $this->equipo_reparado])
-            ->andFilterWhere(['like', 'observaciones', $this->observaciones]);
-
-        return $dataProvider;
-    }*/
         public function search($params,$user_id,$role_id)
     {
         $query = AsignacionSolicitud::find();
