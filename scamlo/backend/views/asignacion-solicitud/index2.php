@@ -76,14 +76,15 @@ $this->params['breadcrumbs'][] = "Ver mis tareas";
                                 'class'=>'btn btn-danger btn-xs',
                                 'data-toggle' => 'modal',
                                 'data-target' => '#modal',
-                                'data-url' => Url::to(['update', 'id' => $model->id]),
+                                'data-url' => Url::to(['update', 'id' => $model->id,'iniciaSesionTrabajador' => true]),
                                 'data-pjax' => '0',
                                 ]);
                 },
                         'view' => function ($url, $model){
-                            return Html::a(Icon::show('eye'), $url, [
+                            return Html::a(Icon::show('eye'),  Url::to(['view', 'id' => $model->id,'iniciaSesionTrabajador' => true]), [
                                 'title' => Yii::t('app', 'Ver tarea'),
                                 'class'=>'btn btn-danger btn-xs',
+                               
                                 ]);
                         },
                 ], 

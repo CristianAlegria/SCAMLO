@@ -39,11 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'target'=>'_blank', 
                 
              ]);
+           
         ?>
     </p>
     <?php Pjax::begin(
-       ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
-       );
+       )
     ?>  
 
     <?= GridView::widget([
@@ -94,14 +94,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class'=>'btn btn-danger btn-xs',
                         'data-toggle' => 'modal',
                         'data-target' => '#modal',
-                        'data-url' => Url::to(['update', 'id' => $model->id,'solicitud_id' => $model->solicitud_id]),
+                        'data-url' => Url::to(['update', 'id' => $model->id,'solicitud_id' => $model->solicitud_id,'iniciaSesionTrabajador' => false]),
                         'data-pjax' => '0',
                         ]);
                 },
                 'view' => function ($url, $model){
-                            return Html::a(Icon::show('eye'), $url, [
+                            return Html::a(Icon::show('eye'), Url::to(['view', 'id' => $model->id,'iniciaSesionTrabajador' => false]), [
                                 'title' => Yii::t('app', 'Ver asignación'),
                                 'class'=>'btn btn-danger btn-xs',
+                             
+                              
                                 ]);
                         },
                 ],

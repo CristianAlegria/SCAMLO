@@ -11,7 +11,9 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'language' => 'es',
     'modules' => [],
+    
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -37,14 +39,23 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+        
+         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => true,
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule', 'controller' => 'AsignacionSolicitudController',
+                    'controller' => 'AsignacionSolicitudController',
+                     'tokens' => [
+                        //'{id_movimiento}' => '<id_movimiento:\\w+>'  OJO estoy de droservicio -> software de Mauricio Muñoz
+                    ]
+                    
+
+                ],
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];

@@ -10,7 +10,14 @@ use kartik\icons\Icon;
 
 $this->title = $model->nombreSolicitud;
 $show_this_nav = PermissionHelpers::requireMinimumRole('Administrativo');
-$this->params['breadcrumbs'][] = ['label' => 'Ver tareas', 'url' => ['index']];
+$iniciaSesionTrabajador = Yii::$app->request->get('iniciaSesionTrabajador');
+            
+if ($iniciaSesionTrabajador) {
+     $this->params['breadcrumbs'][] = ['label' => 'Ver mis tareas', 'url' => ['index2']];
+}else{
+    $this->params['breadcrumbs'][] = ['label' => 'Ver tareas', 'url' => ['index']];
+}
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="asignacion-solicitud-view">

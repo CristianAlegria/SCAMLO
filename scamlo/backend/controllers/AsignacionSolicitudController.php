@@ -178,25 +178,47 @@ class AsignacionSolicitudController extends Controller
     {                 
         
         $model = $this->findModel($id);  
+        $guardo=false;
+        $iniciaSesionTrabajador = Yii::$app->request->get('iniciaSesionTrabajador');
             
         /* if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $submit == false) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }*/
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
             
-            $this->actualizarEstadoDeSolicitud($model->solicitud_id,$model->estado_id);
-            $this->actualizarEstadoDeAsignacionSolicitud($model->solicitud_id,$model->estado_id);
-            
+            if(($this->verificarTrabajadorTarea($model->solicitud_id,$model->usuario_id)==0)){
+                  $guardo= $model->save();
+               }else{
+                     
+                    if($iniciaSesionTrabajador){
+                        $this->actualizarEstadoDeSolicitud($model->solicitud_id,$model->estado_id);
+                        $this->actualizarEstadoDeAsignacionSolicitud($model->solicitud_id,$model->estado_id);
+                        Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.');
+                        return $this->redirect(['index2']);
+                        
+                    }else{
+                        Yii::$app->session->setFlash('error', Icon::show('ban').'El trabajador seleccionado ya se le habia asignado esta tarea.');
+                        return $this->redirect(['index', 'id' =>-1]); 
+                    }
+                   
+               }
+               
+               if ($guardo){
+                     Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.');
+                     return $this->redirect(['view', 'id' => $model->asignacion_id]);
+                  
+                } else {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
           
            // $solicitud_id=$model->solicitud_id;
            // $estado_id=$model->estado_id;
           	
             //Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.'.$model->solicitud_id." - ".$model->estado_id);
-            Yii::$app->session->setFlash('success', Icon::show('check').'Tarea actualizada.');
-           
-            return $this->redirect(['view', 'id' => $model->asignacion_id]);
+            
         } else {
                 if (Yii::$app->user->identity->role_id==40) {
                     return $this->renderAjax('update', [
@@ -272,7 +294,7 @@ class AsignacionSolicitudController extends Controller
             // A4 paper format
             'format' => Pdf::FORMAT_A4,
             // portrait orientation
-            'orientation' => Pdf::ORIENT_PORTRAIT,
+            'orientation' => Pdf::ORIENT_LANDSCAPE,
             // stream to browser inline
             'destination' => Pdf::DEST_BROWSER,
             // your html content input
@@ -281,6 +303,8 @@ class AsignacionSolicitudController extends Controller
             // enhanced bootstrap css built by Krajee for mPDF formatting
             'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
              // call mPDF methods on the fly
+             
+             //'options' => ['title' => 'Krajee Report Title'],
             'methods' => [
                 'SetHeader'=>['Realizado por: '.Yii::$app->user->identity->nombre_completo.' en: '.date("F j, Y")],
                 //'SetFooter'=>[Html::img('@web/images/zzz.jpg')],

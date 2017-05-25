@@ -28,7 +28,7 @@ use yii\bootstrap\Modal;
 
     <?php $time = time();?>
 
-    <?php date_default_timezone_set('America/Bogota');  ?>
+    <?php date_default_timezone_set('America/Bogota');  ?> 
      
     <?php $fecha = date('Y-m-d (H:i:s)', $time);?>
 
