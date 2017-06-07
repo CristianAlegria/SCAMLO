@@ -27,6 +27,7 @@ use yii\bootstrap\Modal;
    </div>  
     
     <?php $form = ActiveForm::begin(); ?>
+    
 
     <?= $this->render('_solicitudes'); ?>
 

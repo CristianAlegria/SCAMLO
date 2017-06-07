@@ -27,12 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a( Icon::show('plus').'Asignar tareas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <p>
-        <?php
-            /*echo Html::a(Icon::show('file-pdf-o').'Click aqui. REPORTE EN PDF', ['/asignacion-solicitud/report'], [
-                'class'=>'btn btn-xs linksWithTarget', 
-                'target'=>'_blank', 
-            ]);*/
-        ?>
+        
         <?php
             echo Html::a(Icon::show('file-pdf-o').'Generar  PDF', ['/asignacion-solicitud/report'], [
                 'class'=>'btn btn-danger linksWithTarget', 
@@ -43,7 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
     </p>
     <?php Pjax::begin(
-       )
+        ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
+       );
     ?>  
 
     <?= GridView::widget([

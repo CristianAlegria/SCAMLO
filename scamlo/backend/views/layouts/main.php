@@ -53,6 +53,7 @@ MomentjsAsset::register($this);
     $es_administrador = ValueHelpers::getRoleValue('Administrador');      
     $es_administrativo = ValueHelpers::getRoleValue('Administrativo'); 
     $es_mantenimientoLogistica = ValueHelpers::getRoleValue('MantenimientoLogistica');  
+    $es_docente = ValueHelpers::getRoleValue('Docente');
     $es_usuario = ValueHelpers::getRoleValue('Usuario');  
 
     NavBar::begin([
@@ -116,10 +117,20 @@ MomentjsAsset::register($this);
         ];      
     }
     
+    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->role_id == $es_docente) {
+        
+       $menuItems [] = ['label' => Icon::show('list-alt', ['class'=>'fa-lg']).'Gestionar Solicitud de servicio',  
+            'items' => [
+                ['label' => 'Ver solicitudes', 'url' => ['/solicitud/index']], 
+            ],
+        ];      
+    }
+    
 
     if (Yii::$app->user->isGuest) {        
        
         $menuItems[] = ['label' => Icon::show('sign-in', ['class'=>'fa-lg']).'Ingresar', 'url' => ['/site/login']];
+       // $menuItems[] = ['label' => Icon::show('external-link', ['class'=>'fa-lg']).'Crear cuenta', 'url' => ['/site/login']];
 
     } else {
 
@@ -130,6 +141,8 @@ MomentjsAsset::register($this);
             ],
         ];        
     }
+    
+    
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

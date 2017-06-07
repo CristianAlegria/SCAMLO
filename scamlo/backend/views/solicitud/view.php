@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="solicitud-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+     
      <p>
 
     <?php if (!Yii::$app->user->isGuest && $show_this_nav) {
