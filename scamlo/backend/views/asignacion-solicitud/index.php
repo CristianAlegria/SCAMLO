@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use backend\models\Estado;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
+use kartik\date\DatePicker;
 
 
 
@@ -21,22 +22,71 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="asignacion-solicitud-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-      
     <p>
         <?= Html::a( Icon::show('plus').'Asignar tareas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <p>
-        
-        <?php
-            echo Html::a(Icon::show('file-pdf-o').'Generar  PDF', ['/asignacion-solicitud/report'], [
-                'class'=>'btn btn-danger linksWithTarget', 
-                'target'=>'_blank', 
-                
-             ]);
-           
-        ?>
+        <div class="form-group" id="reporte">
+            <hr>
+              <h4>
+                 <label>Generar reporte</label>  
+              </h4>
+              
+               <table>
+                   <tr>
+                       <td><label>De:</label></td>
+                       <td>
+                          <?php // usage without model
+                          
+                            echo DatePicker::widget([
+                            	'name' => 'check_issue_date_De', 
+                            	 'value' => date('Y-M-d'),
+                            	//'value' => date('Y-M-d', strtotime('+2 days')),
+                            	'options' => ['placeholder' => 'Seleccione fecha...'],
+                            	'pluginOptions' => [
+                            	    'format' => 'yyyy-MM-dd',
+                            	    'autoclose'=>true,
+                            		'todayHighlight' => true
+                            	]
+                            ]);
+                           
+                          ?>
+                        </td>
+                       <td><label>Hasta:<?php echo ['check_issue_date_De']['value']  ?></label></td>
+                       <td>
+                           <?php // usage without model
+                                echo DatePicker::widget([
+                                	'name' => 'check_issue_date_hasta', 
+                                	'value' => date('Y-M-d', strtotime('+2 days')),
+                                	'options' => ['placeholder' => 'Seleccione fecha ...'],
+                                	'pluginOptions' => [
+                                		'format' => 'yyyy-MM-dd',
+                                		'autoclose'=>true,
+                                		'todayHighlight' => true
+                                	]
+                                ]);
+                                
+                            ?>  
+                        </td>
+                       
+                        <td>
+                            <?php
+                                echo Html::a(Icon::show('file-pdf-o').'Generar  PDF', ['/asignacion-solicitud/report'], [
+                                    'class'=>'btn btn-danger linksWithTarget', 
+                                    'target'=>'_blank', 
+                                    
+                                 ]);
+                            ?>
+                        </td>
+                   </tr>
+               </table>
+           </hr>
+           <hr>
+           </hr>
+       </div>
     </p>
+    
+    
     <?php Pjax::begin(
         ['id' => 'samle', 'linkSelector' => 'a:not(.linksWithTarget)']
        );
@@ -71,12 +121,13 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'user_id',
           'nombreUser',
           'fecha_hora_inicio',
-          'fecha_hora_fin',            
+          'fecha_hora_fin',       
+     
 
             [
             'attribute' => 'Estado',
             'value' => 'estado.nombre',
-            'filter' => Html::activeDropDownList($searchModel, 'estado_id', ArrayHelper::map(Estado::find()->asArray()->all(), 'nombre', 'nombre'), ['class' => 'form-control', 'prompt' => '']),
+            'filter' => Html::activeDropDownList($searchModel, 'estado_id', ArrayHelper::map(Estado::find()->asArray()->all(), 'id', 'nombre'), ['class' => 'form-control', 'prompt' => '']),/* 'id', 'nombre'-> son las columnas como se llaman en la base de datos*/
             ],  
 
            ['class' => 'yii\grid\ActionColumn',

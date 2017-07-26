@@ -61,10 +61,10 @@ class SolicitudController extends Controller
         ],
         ],
         'verbs' => [
-        'class' => VerbFilter::className(),
-        'actions' => [
-        'delete' => ['POST'],
-        ],
+            'class' => VerbFilter::className(),
+            'actions' => [
+            'delete' => ['POST'],
+            ],
         ],
         ];
     }

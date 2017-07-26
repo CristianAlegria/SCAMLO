@@ -109,7 +109,7 @@ $("form#solicitud-form").on("beforeSubmit", function(e) {
     return false;
 });
 // obtener la id del formulario y establecer el manejador de eventos Usuarios
-$("form#asignacion-solicitud-form-modificar").on("beforeSubmit", function(e) {
+$("form#asignacion-solicitud-form").on("beforeSubmit", function(e) {
     var form = $(this);
     $.post(
     form.attr("action")+"&submit=true",

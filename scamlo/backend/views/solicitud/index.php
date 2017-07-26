@@ -75,10 +75,10 @@ $this->params['breadcrumbs'][] = $this->title;
              'fecha',
             // 'user_id',
              //'estado_id',
-              [
-            'attribute' => 'estado_id',
+            [
+            'attribute' => 'Estado',
             'value' => 'estado.nombre',
-            'filter' => Html::activeDropDownList($searchModel, 'estado_id', ArrayHelper::map(Estado::find()->asArray()->all(), 'nombre', 'nombre'), ['class' => 'form-control', 'prompt' => '']),
+            'filter' => Html::activeDropDownList($searchModel, 'estado_id', ArrayHelper::map(Estado::find()->asArray()->all(), 'id', 'nombre'), ['class' => 'form-control', 'prompt' => '']),/* 'id', 'nombre'-> son las columnas como se llaman en la base de datos*/
             ],            
 
              //'descripcion_estado',

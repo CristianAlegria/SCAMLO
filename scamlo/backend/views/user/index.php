@@ -23,7 +23,7 @@ $show_this_nav = PermissionHelpers::requireMinimumRole('Auxiliar');
 <div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+   
 
     <p>
         <?= Html::a( Icon::show('plus').'Nuevo usuario', '#', [

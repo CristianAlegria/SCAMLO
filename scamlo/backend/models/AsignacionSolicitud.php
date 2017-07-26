@@ -63,6 +63,7 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+     
     public function attributeLabels()
     {
         return [
@@ -78,6 +79,7 @@ class AsignacionSolicitud extends \yii\db\ActiveRecord
             'observaciones' => 'Observaciones',
             'nombreUser' => 'Trabajador Encargado',
             'nombreSolicitud' =>'Solicitud',
+            
             
            
             'solicitudId'=>'No. de solicitud',

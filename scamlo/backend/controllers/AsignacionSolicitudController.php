@@ -32,6 +32,7 @@ class AsignacionSolicitudController extends Controller
     public function behaviors()
     {
         return [
+            
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
